@@ -1,0 +1,5 @@
+# ignore eclipse project files
+
+# ignore Intellij Idea project files
+.idea
+*.iml
