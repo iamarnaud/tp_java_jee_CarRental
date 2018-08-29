@@ -4,16 +4,16 @@ import org.json.JSONObject;
 
 public class Car {
 
-	private String id="";
-	private String brand="";
-	private String model="";
-	private String color="";
-	private String plateNumber="";
-	private String price="";
-	private String kmPrice="";
-	private String horsePower="";
+	private int id;
+	private String brand;
+	private String model;
+	private String color;
+	private String plateNumber;
+	private double price;
+	private double kmPrice;
+	private int horsePower;
 	
-	public Car(String id, String brand, String model, String color, String plateNumber, String price, String kmPrice, String horsePower){
+	public Car(int id, String brand, String model, String color, String plateNumber, double price, double kmPrice, int horsePower){
 		setId(id);
 		setBrand(brand);
 		setModel(model);
@@ -24,10 +24,10 @@ public class Car {
 		setHorsePower(horsePower);
 	}
 	
-	public String getId() {
+	public int getId() {
 		return id;
 	}
-	public void setId(String id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 	public String getBrand() {
@@ -54,22 +54,22 @@ public class Car {
 	public void setPlateNumber(String plateNumber) {
 		this.plateNumber = plateNumber;
 	}
-	public String getPrice(){
+	public double getPrice(){
 		return price;
 	}
-	public void setPrice (String price) {
+	public void setPrice (double price) {
 		this.price = price;
 	}
-	public String getKmPrice() {
+	public double getKmPrice() {
 		return kmPrice;
 	}
-	public void setKmPrice(String kmPrice) {
+	public void setKmPrice(double kmPrice) {
 		this.kmPrice = kmPrice;
 	}
-	public String getHorsePower() {
+	public int getHorsePower() {
 		return horsePower;
 	}
-	public void setHorsePower(String horsePower) {
+	public void setHorsePower(int horsePower) {
 		this.horsePower = horsePower;
 	}
 	

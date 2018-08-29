@@ -1,0 +1,19 @@
+1534345341354	Rename type 'car'
+1534345483943	Encapsulate field 'login'
+1534345487695	Encapsulate field 'firstName'
+1534345492355	Encapsulate field 'lastName'
+1534345496519	Encapsulate field 'mail'
+1534345934389	Encapsulate field 'brand'
+1534345940068	Encapsulate field 'model'
+1534345944635	Encapsulate field 'plateNumber'
+1534345949699	Encapsulate field 'id'
+1534347236719	Encapsulate field 'isGuest'
+1534347440735	Encapsulate field 'id'
+1534348779829	Delete element
+1534348922452	Delete elements
+1534348930298	Delete element
+1534349109138	Delete element
+1534349407622	Move compilation unit
+1534349429756	Rename type 'MyServlet'
+1534352560451	Delete element
+1534354067725	Copy field
