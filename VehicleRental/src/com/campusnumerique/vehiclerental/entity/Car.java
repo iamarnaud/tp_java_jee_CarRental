@@ -4,16 +4,20 @@ import org.json.JSONObject;
 
 public class Car {
 
-	private String id="";
+	private int id=0;
 	private String brand="";
 	private String model="";
 	private String color="";
 	private String plateNumber="";
-	private String price="";
-	private String kmPrice="";
-	private String horsePower="";
+	private double price=0;
+	private double kmPrice=0;
+	private int horsePower=0;
 	
-	public Car(String id, String brand, String model, String color, String plateNumber, String price, String kmPrice, String horsePower){
+	public Car(){
+		
+	}
+	
+	public Car(Integer id, String brand, String model, String color, String plateNumber, double price, double kmPrice, Integer horsePower){
 		setId(id);
 		setBrand(brand);
 		setModel(model);
@@ -24,55 +28,69 @@ public class Car {
 		setHorsePower(horsePower);
 	}
 	
-	public String getId() {
+	public int getId() {
 		return id;
 	}
-	public void setId(String id) {
+
+	public void setId(int id) {
 		this.id = id;
 	}
+
 	public String getBrand() {
 		return brand;
 	}
+
 	public void setBrand(String brand) {
 		this.brand = brand;
 	}
+
 	public String getModel() {
 		return model;
 	}
+
 	public void setModel(String model) {
 		this.model = model;
 	}
-	public String getColor(){
+
+	public String getColor() {
 		return color;
 	}
-	public void setColor(String color){
+
+	public void setColor(String color) {
 		this.color = color;
 	}
+
 	public String getPlateNumber() {
 		return plateNumber;
 	}
+
 	public void setPlateNumber(String plateNumber) {
 		this.plateNumber = plateNumber;
 	}
-	public String getPrice(){
+
+	public double getPrice() {
 		return price;
 	}
-	public void setPrice (String price) {
+
+	public void setPrice(double price) {
 		this.price = price;
 	}
-	public String getKmPrice() {
+
+	public double getKmPrice() {
 		return kmPrice;
 	}
-	public void setKmPrice(String kmPrice) {
+
+	public void setKmPrice(double kmPrice) {
 		this.kmPrice = kmPrice;
 	}
-	public String getHorsePower() {
+
+	public int getHorsePower() {
 		return horsePower;
 	}
-	public void setHorsePower(String horsePower) {
+
+	public void setHorsePower(int horsePower) {
 		this.horsePower = horsePower;
 	}
-	
 
 	public JSONObject getInfos(){
 		JSONObject infos= new JSONObject();

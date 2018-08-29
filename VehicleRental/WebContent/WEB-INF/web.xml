@@ -4,4 +4,19 @@
     <servlet-name>ClientServlet</servlet-name>
     <servlet-class>com.campusnumerique.vehiclerental.servlet.client.ClientServlet</servlet-class>
   </servlet>
+
+	<servlet-mapping>
+		<servlet-name>ClientServlet</servlet-name>
+		<url-pattern>/clients</url-pattern>
+	</servlet-mapping>
+	
+  <servlet>
+    <servlet-name>CarServlet</servlet-name>
+    <servlet-class>com.campusnumerique.vehiclerental.servlet.client.CarServlet</servlet-class>
+  </servlet>
+
+	<servlet-mapping>
+		<servlet-name>CarServlet</servlet-name>
+		<url-pattern>/cars</url-pattern>
+	</servlet-mapping>  
 </web-app>
