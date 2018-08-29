@@ -1,3 +1,5 @@
+<%@page import="com.campusnumerique.vehiclerental.entity.Client"%>
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="UTF-8"%>
 
@@ -20,7 +22,7 @@
 	
 	<!-- General -->
 	<link rel="stylesheet" href="../resources/css/global.css" />
-	<script src="../resources/js/client.js"></script>
+<!-- 	<script src="../resources/js/client.js"></script> -->
 </head>
 <body>
 	<nav class="navbar navbar-light " id="header">
@@ -29,10 +31,10 @@
 	 </a>
 	  <ul class="nav nav-pills">
 	    <li class="nav-item">
-	      <a class="nav-link" href="./clients.jsp">Client List</a>
+	      <a class="nav-link" href="./ClientServlet">Client List</a>
 	    </li>
 	    <li class="nav-item">
-	      <a class="nav-link" href="./cars.jsp">Car List</a>
+	      <a class="nav-link" href="./CarServlet">Car List</a>
 	    </li>
 	   </ul>
 		<ul class="nav navbar-nav navbar-right">
@@ -45,13 +47,18 @@
 			<table id="userTable" class="table table-striped">
 				<thead>
 					<tr>
-						<th>Login</th>
+						<th>Mail</th>
 						<th>First Name</th>
 						<th>Last Name</th>
 					</tr>
 				</thead>
 				<tbody>
-		
+					<%
+						ArrayList<Client> clients = (ArrayList<Client>) request.getAttribute("clients");
+					for (Client client2 : clients){
+						out.println("<tr><td>"+client2.getMail()+"</td><td>"+client2.getFirstName()+"</td><td>"+client2.getLastName()+"</td></tr>");
+					}
+					%>
 				</tbody>
 			</table>
 		</div>
