@@ -6,6 +6,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -47,7 +48,6 @@ public class ReservationServlet extends HttpServlet {
 		
 		Reservation resa = new Reservation();
 		
-//		Integer i = new Integer(request.getParameter("clientId"));
 		int nb= 0;
 		try{
 			nb = Integer.parseInt(request.getParameter("clientId").trim());
@@ -57,7 +57,6 @@ public class ReservationServlet extends HttpServlet {
 		
 		resa.setClientId(nb);
 		
-//		i = new Integer(request.getParameter("kmestime"));
 		try{
 			nb = Integer.parseInt(request.getParameter("kmestime"));
 		} catch(NumberFormatException e) {
@@ -90,7 +89,11 @@ public class ReservationServlet extends HttpServlet {
 			e.printStackTrace();
 		}
 		
-		doGet(request, response);
+		request.setAttribute("resa", resa);
+		RequestDispatcher rd = request.getRequestDispatcher("CarAvailableServlet");
+		rd.forward(request,response);
+		
+//		doGet(request, response);
 //		this.getServletContext().getRequestDispatcher( "/pages/cars.jsp" ).forward( request, response );
 	}
 

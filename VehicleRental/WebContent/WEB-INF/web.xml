@@ -15,6 +15,13 @@
   <servlet-mapping>
     <servlet-name>CarServlet</servlet-name>
     <url-pattern>/cars</url-pattern>
+  </servlet-mapping><servlet>
+    <servlet-name>CarAvailableServlet</servlet-name>
+    <servlet-class>com.campusnumerique.vehiclerental.servlet.client.CarAvailableServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CarAvailableServlet</servlet-name>
+    <url-pattern>/carsAvailable</url-pattern>
   </servlet-mapping>
     <servlet>
     <servlet-name>ReservationServlet</servlet-name>
