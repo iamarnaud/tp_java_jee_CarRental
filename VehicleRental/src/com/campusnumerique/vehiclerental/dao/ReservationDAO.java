@@ -3,7 +3,6 @@ package com.campusnumerique.vehiclerental.dao;
 import java.sql.SQLException;
 import java.util.List;
 
-import com.campusnumerique.vehiclerental.entity.Client;
 import com.campusnumerique.vehiclerental.entity.Reservation;
 
 public class ReservationDAO  extends DAO<Reservation> {
@@ -37,5 +36,6 @@ public class ReservationDAO  extends DAO<Reservation> {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
 
 }
