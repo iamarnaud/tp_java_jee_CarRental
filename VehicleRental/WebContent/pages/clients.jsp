@@ -46,7 +46,7 @@
 					<%
 					ArrayList<Client> clientsList = (ArrayList<Client>) request.getAttribute("clientslist");
 					for(Client client2 : clientsList) {
-						out.println("<tr><td>" + client2.getMail() + "</td> <td><a href='/reservation?id="+client2.getId()+"'>" + client2.getFirstName() + "</a></td> <td>" + client2.getLastName() + "</td> <td>" + client2.getAge() + "</td></tr>");
+						out.println("<tr><td>" + client2.getMail() + "</td> <td><a href='./reservation?id="+client2.getId()+"'>" + client2.getFirstName() + "</a></td> <td>" + client2.getLastName() + "</td> <td>" + client2.getAge() + "</td></tr>");
 					}
 					%>
 				</tbody>

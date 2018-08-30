@@ -41,7 +41,7 @@
 				<fieldset>
 					<legend>When do you want to drive ? </legend>
 					<p>Choose when and where...</p>
-					<input type="hidden" id="clientId" name="clientId"> <label
+					<input type="hidden" id="clientId" name="clientId" value="<% out.println(request.getParameter("id")); %>"> <label
 						for="datedebut">Date début <span class="requis">*</span></label> <input
 						type="date" id="datedebut" name="datedebut" value="" size="20" />
 					<br /> <label for="datefin">Date fin <span class="requis">*</span></label>
