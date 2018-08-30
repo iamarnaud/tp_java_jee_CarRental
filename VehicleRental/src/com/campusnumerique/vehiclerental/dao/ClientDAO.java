@@ -1,5 +1,6 @@
 package com.campusnumerique.vehiclerental.dao;
 
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -13,7 +14,8 @@ public class ClientDAO extends DAO<Client>{
 
 	@Override
 	public boolean create(Client obj) {
-		// TODO Auto-generated method stub
+//		PreparedStatement ps = this.connection.prepareStatement("INSERT INTO client (login, firstName, lastName, mail, dob, licenceDate, licenceNumber) Value (?, ?, ?, ?, ?, ?, ?)")
+				
 		return false;
 	}
 
