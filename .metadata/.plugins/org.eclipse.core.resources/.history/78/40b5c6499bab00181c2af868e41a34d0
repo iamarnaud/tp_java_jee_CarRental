@@ -1,0 +1,32 @@
+package com.campusnumerique.vehiclerental.bean;
+
+import java.sql.Date;
+import java.time.LocalDate;
+import java.time.Period;
+
+public class AgeBean {
+	
+	private int age;
+	
+	public AgeBean() {
+		setAge(0);
+	}
+	
+	public AgeBean(int age) {
+		setAge(age);
+	}
+
+	public int getAge() {
+		return age;
+	}
+
+	public void setAge(Date date) {
+		LocalDate dob = LocalDate.of(date.getYear(), date.getMonth(), date.getDay())
+		LocalDate now = LocalDate.now();
+		Period period = Period.between(dob, now);
+		this.age = period.getYears();
+	}
+	
+	
+
+}

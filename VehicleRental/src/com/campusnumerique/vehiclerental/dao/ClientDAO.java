@@ -38,7 +38,7 @@ public class ClientDAO extends DAO<Client>{
 		    ResultSet.CONCUR_READ_ONLY
 		  ).executeQuery("SELECT * FROM client WHERE id = " + id);
 		if(result.first())
-			client = new Client(id, result.getString("login"), result.getString("firstName"), result.getString("lastName"), result.getString("mail"));         
+			client = new Client(id, result.getString("login"), result.getString("firstName"), result.getString("lastName"), result.getString("mail"), result.getDate("dob"), result.getDate("licenceDate"), result.getString("licenceNumber"));         
 		
 		return client;
 	}
@@ -52,7 +52,7 @@ public class ClientDAO extends DAO<Client>{
 		  ).executeQuery("SELECT * FROM client");
 		while(result.next()){
 			Client client = new Client(); 
-			client = new Client(result.getInt("id"), result.getString("login"), result.getString("firstName"), result.getString("lastName"), result.getString("mail"));    
+			client = new Client(result.getInt("id"), result.getString("login"), result.getString("firstName"), result.getString("lastName"), result.getString("mail"), result.getDate("dob"), result.getDate("licenceDate"), result.getString("licenceNumber"));    
 			clients.add(client);
 		}
 		return clients;
@@ -68,7 +68,7 @@ public class ClientDAO extends DAO<Client>{
 			  ).executeQuery("SELECT * FROM client");
 			while(result.next()){
 				Client client = new Client(); 
-				client = new Client(result.getInt("id"), result.getString("login"), result.getString("firstName"), result.getString("lastName"), result.getString("mail"));    
+				client = new Client(result.getInt("id"), result.getString("login"), result.getString("firstName"), result.getString("lastName"), result.getString("mail"), result.getDate("dob"), result.getDate("licenceDate"), result.getString("licenceNumber"));    
 				clients.put(client.getInfos());
 			}
 		} catch (SQLException e) {

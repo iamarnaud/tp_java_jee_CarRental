@@ -1,5 +1,9 @@
 package com.campusnumerique.vehiclerental.entity;
 
+import java.sql.Date;
+import java.time.LocalDate;
+import java.time.Period;
+
 import org.json.JSONObject;
 
 public class Client {
@@ -9,6 +13,9 @@ public class Client {
 	private String firstName="";
 	private String lastName="";
 	private String mail="";
+	private Date dob;
+	private Date licenceDate;
+	private String licenceNumber = "";
 	private boolean isGuest=false;
 	
 	public Client(){
@@ -16,12 +23,15 @@ public class Client {
 		setGuest(true);
 	}
 	
-	public Client(int id, String login, String firstName, String lastName, String mail){
+	public Client(int id, String login, String firstName, String lastName, String mail, Date dob, Date licenceDate, String licenceNumber){
 		setId(id);
 		setLogin(login);  
 		setFirstName(firstName);
 		setLastName(lastName);
 		setMail(mail);
+		setDob(dob);
+		setLicenceDate(licenceDate);
+		setLicenceNumber(licenceNumber);
 		setGuest(false);
 	}
 	
@@ -67,6 +77,30 @@ public class Client {
 		this.id = id;
 	}
 	
+	public Date getDob() {
+		return dob;
+	}
+
+	public void setDob(Date dob) {
+		this.dob = dob;
+	}
+
+	public Date getLicenceDate() {
+		return licenceDate;
+	}
+
+	public void setLicenceDate(Date licenceDate) {
+		this.licenceDate = licenceDate;
+	}
+
+	public String getLicenceNumber() {
+		return licenceNumber;
+	}
+
+	public void setLicenceNumber(String licenceNumber) {
+		this.licenceNumber = licenceNumber;
+	}
+
 	public JSONObject getInfos(){
 		JSONObject infos= new JSONObject();
 		infos.put("login", login);
@@ -80,5 +114,12 @@ public class Client {
 	
 	public String toString(){
 		return getInfos().toString();
+	}
+
+	public int getAge() {
+		LocalDate date = LocalDate.of(dob.getYear() + 1900, dob.getMonth() +1, dob.getDay() +1);
+		LocalDate now = LocalDate.now();
+		Period period = Period.between(date, now);
+		return period.getYears();
 	}
 }

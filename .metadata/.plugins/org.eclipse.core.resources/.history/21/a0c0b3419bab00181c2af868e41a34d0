@@ -1,0 +1,25 @@
+package com.campusnumerique.vehiclerental.bean;
+
+public class AgeBean {
+	
+	private int age;
+	
+	public AgeBean() {
+		setAge(0);
+	}
+	
+	public AgeBean(int age) {
+		setAge(age);
+	}
+
+	public int getAge() {
+		return age;
+	}
+
+	public void setAge(int age) {
+		this.age = age;
+	}
+	
+	
+
+}
