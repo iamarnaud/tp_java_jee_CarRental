@@ -1,6 +1,6 @@
 package com.campusnumerique.vehiclerental.entity;
 
-import java.sql.Date;
+import java.util.Date;
 
 public class Reservation {
 
@@ -12,6 +12,12 @@ public class Reservation {
 	private int realKm;
 	private int price;
 	
+	
+	public Reservation() {
+		setCarId(1);
+		setRealKm(0);
+		setPrice(0);
+	}
 	
 	public Reservation(int clientId, int carId, Date startDate, Date endDate, int estimatedKm, int realKm, int price) {
 		super();
