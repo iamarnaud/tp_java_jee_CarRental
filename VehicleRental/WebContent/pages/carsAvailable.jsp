@@ -41,13 +41,15 @@
 						<th>Price</th>
 						<th>Km price</th>
 						<th>Horse Power</th>
+						<th>Estimated Price</th>
 					</tr>
 				</thead>
 				<tbody>
 					<% 
 					ArrayList<Car> carslist = (ArrayList<Car>) request.getAttribute("carslist");
 					for(Car car : carslist){
-						out.println("<tr><td>" +car.getBrand() + "</td> <td>" +car.getModel() + "</td> <td>" +car.getColor() + "</td> <td>" +car.getPlateNumber() + "</td> <td>" +car.getPrice() + "</td> <td>" +car.getKmPrice() + "</td> <td>" +car.getHorsePower() + "</td></tr> ");
+						out.println("<tr><td>"
+					+car.getBrand() + "</td> <td>" +car.getModel() + "</td> <td>" +car.getColor() + "</td> <td>" +car.getPlateNumber() + "</td> <td>" +car.getPrice() + "</td> <td>" +car.getKmPrice() + "</td> <td>" +car.getHorsePower() + "</td> <td>" + (car.getPrice() + car.getKmPrice()*Integer.parseInt(request.getParameter("kmestime"))) + " €" + "</td> </tr> ");
 					}
 					%>
 				</tbody>
