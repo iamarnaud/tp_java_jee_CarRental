@@ -81,6 +81,21 @@ public class ReservationDAO  extends DAO<Reservation> {
 		}
 		return resas;
 	}
+	
+	public List<Reservation> findByCarId(int carId) throws SQLException {
+		ArrayList<Reservation> resacar = new ArrayList<Reservation>();
+		
+		ResultSet result = this.connection.createStatement(
+		    ResultSet.TYPE_SCROLL_INSENSITIVE, 
+		    ResultSet.CONCUR_READ_ONLY
+		    ).executeQuery("SELECT * FROM reservation WHERE carId = " + carId);
+		while(result.next()){
+			Reservation resa = new Reservation(result.getInt("clientId"), result.getInt("carId"), result.getDate("startDate"), result.getDate("endDate"), result.getInt("estimatedKm"), result.getInt("realKm"), result.getInt("price"));
+			resacar.add(resa);
+		}
+		
+		return resacar;
+	}
 
 
 }
