@@ -54,22 +54,30 @@ public class CarAvailableServlet extends HttpServlet {
 		CarDAO carDAO = new CarDAO();
 		
 		if (client.getAge() < 21){
-			carslist = (ArrayList<Car>) carDAO.findSmall();
+			try {
+				carslist = (ArrayList<Car>) carDAO.findByHorsePower(8);
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 		else if (client.getAge() <= 25){
-			carslist = (ArrayList<Car>) carDAO.findMedium();
+			try {
+				carslist = (ArrayList<Car>) carDAO.findByHorsePower(14);
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 		
 		else {
-			carslist = (ArrayList<Car>) carDAO.findAll();
+			try {
+				carslist = (ArrayList<Car>) carDAO.findAll();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
-		
-//		try {
-//			carslist = (ArrayList<Car>) carDAO.findAll();
-//		} catch (SQLException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
 		
 		// on set l'attribut qu'on envoie à la vue
 		request.setAttribute("carslist", carslist);

@@ -49,27 +49,13 @@ public class CarDAO extends DAO<Car>{
 		return cars;
 	}
 	
-	public List<Car> findSmall() throws SQLException{
+	public List<Car> findByHorsePower(int horsePower) throws SQLException{
 		ArrayList<Car> cars = new ArrayList<Car>();
 		
 		ResultSet result = this.connection.createStatement(
 		    ResultSet.TYPE_SCROLL_INSENSITIVE, 
 		    ResultSet.CONCUR_READ_ONLY
-		  ).executeQuery("SELECT * FROM car WHERE horsePower < 8");
-		while(result.next()){ 
-			Car car = new Car(result.getInt("id"), result.getString("brand"), result.getString("model"), result.getString("color"), result.getString("plateNumber"), result.getDouble("price"), result.getDouble("kmPrice"), result.getInt("horsePower"));    
-			cars.add(car);
-		}
-		return cars;
-	}
-	
-	public List<Car> findMedium() throws SQLException{
-		ArrayList<Car> cars = new ArrayList<Car>();
-		
-		ResultSet result = this.connection.createStatement(
-		    ResultSet.TYPE_SCROLL_INSENSITIVE, 
-		    ResultSet.CONCUR_READ_ONLY
-		  ).executeQuery("SELECT * FROM car WHERE horsePower < 14");
+		  ).executeQuery("SELECT * FROM car WHERE horsePower < " + horsePower);
 		while(result.next()){ 
 			Car car = new Car(result.getInt("id"), result.getString("brand"), result.getString("model"), result.getString("color"), result.getString("plateNumber"), result.getDouble("price"), result.getDouble("kmPrice"), result.getInt("horsePower"));    
 			cars.add(car);
