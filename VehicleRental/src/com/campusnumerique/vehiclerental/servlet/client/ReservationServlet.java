@@ -108,16 +108,19 @@ public class ReservationServlet extends HttpServlet {
 					String error = "Vous avez deja une reservation en cours dans cette periode.";
 					request.setAttribute("error", error);
 					doGet(request, response);
+					return;
 				} else {
 					if (resa.getEndDate().getTime() >= reservation.getStartDate().getTime() && resa.getEndDate().getTime() <= reservation.getEndDate().getTime()) {
 						String error = "Vous avez deja une reservation en cours dans cette periode.";
 						request.setAttribute("error", error);
 						doGet(request, response);
+						return;
 					} else {
 						if (resa.getStartDate().getTime() < reservation.getStartDate().getTime() && resa.getEndDate().getTime() > reservation.getEndDate().getTime()) {
 							String error = "Vous avez deja une reservation en cours dans cette periode.";
 							request.setAttribute("error", error);
 							doGet(request, response);
+							return;
 						}
 					}
 				}
