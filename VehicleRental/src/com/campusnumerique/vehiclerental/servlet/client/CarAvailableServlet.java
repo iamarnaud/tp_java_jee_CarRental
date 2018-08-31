@@ -11,8 +11,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.campusnumerique.vehiclerental.dao.CarDAO;
+import com.campusnumerique.vehiclerental.dao.ClientDAO;
 import com.campusnumerique.vehiclerental.dao.ReservationDAO;
 import com.campusnumerique.vehiclerental.entity.Car;
+import com.campusnumerique.vehiclerental.entity.Client;
 import com.campusnumerique.vehiclerental.entity.Reservation;
 
 /**
@@ -37,9 +39,10 @@ public class CarAvailableServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException  {
 		
 		Reservation resa = (Reservation) request.getAttribute("resa");
-		ReservationDAO resaDAO = new ReservationDAO();
+		Client client = new Client();
+		ClientDAO clientDAO = new ClientDAO();
 		try {
-			resa = resaDAO.find(resa.getClientId());
+			client = clientDAO.find(resa.getClientId());
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
