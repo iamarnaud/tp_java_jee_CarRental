@@ -2,9 +2,12 @@ package com.campusnumerique.vehiclerental.dao;
 
 import java.sql.Date;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
+import com.campusnumerique.vehiclerental.entity.Car;
 import com.campusnumerique.vehiclerental.entity.Reservation;
 
 public class ReservationDAO  extends DAO<Reservation> {
@@ -52,8 +55,31 @@ public class ReservationDAO  extends DAO<Reservation> {
 
 	@Override
 	public List<Reservation> findAll() throws SQLException {
-		// TODO Auto-generated method stub
-		return null;
+		ArrayList<Reservation> resas = new ArrayList<Reservation>();
+		
+		ResultSet result = this.connection.createStatement(
+		    ResultSet.TYPE_SCROLL_INSENSITIVE, 
+		    ResultSet.CONCUR_READ_ONLY
+		  ).executeQuery("SELECT * FROM reservation");
+		while(result.next()){ 
+			Reservation resa = new Reservation(result.getInt("clientId"), result.getInt("carId"), result.getDate("startDate"), result.getDate("endDate"), result.getInt("estimatedKm"), result.getInt("realKm"), result.getInt("price"));    
+			resas.add(resa);
+		}
+		return resas;
+	}
+	
+	public List<Reservation> findByClientId(int clientId) throws SQLException {
+		ArrayList<Reservation> resas = new ArrayList<Reservation>();
+		
+		ResultSet result = this.connection.createStatement(
+		    ResultSet.TYPE_SCROLL_INSENSITIVE, 
+		    ResultSet.CONCUR_READ_ONLY
+		  ).executeQuery("SELECT * FROM reservation WHERE clientId = "+clientId);
+		while(result.next()){ 
+			Reservation resa = new Reservation(result.getInt("clientId"), result.getInt("carId"), result.getDate("startDate"), result.getDate("endDate"), result.getInt("estimatedKm"), result.getInt("realKm"), result.getInt("price"));    
+			resas.add(resa);
+		}
+		return resas;
 	}
 
 

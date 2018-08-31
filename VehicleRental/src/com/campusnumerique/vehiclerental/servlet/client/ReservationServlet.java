@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 
 import javax.servlet.RequestDispatcher;
@@ -82,19 +83,51 @@ public class ReservationServlet extends HttpServlet {
 		resa.setEndDate(d);
 		
 		ReservationDAO resaDAO = new ReservationDAO();
+//		try {
+//			resaDAO.create(resa);
+//		} catch (SQLException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+		
+		ArrayList<Reservation> resaList = new ArrayList<Reservation>();
 		try {
-			resaDAO.create(resa);
+			resaList = (ArrayList<Reservation>) resaDAO.findByClientId(resa.getClientId());
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
+		if (resaList.isEmpty()) {
+			request.setAttribute("resa", resa);
+			RequestDispatcher rd = request.getRequestDispatcher("CarAvailableServlet");
+			rd.forward(request,response);
+		} else {
+			for (Reservation reservation : resaList) {
+				if (resa.getStartDate().getTime() >= reservation.getStartDate().getTime() && resa.getStartDate().getTime() <= reservation.getEndDate().getTime()) {
+					String error = "Vous avez deja une reservation en cours dans cette periode.";
+					request.setAttribute("error", error);
+					doGet(request, response);
+				} else {
+					if (resa.getEndDate().getTime() >= reservation.getStartDate().getTime() && resa.getEndDate().getTime() <= reservation.getEndDate().getTime()) {
+						String error = "Vous avez deja une reservation en cours dans cette periode.";
+						request.setAttribute("error", error);
+						doGet(request, response);
+					} else {
+						if (resa.getStartDate().getTime() < reservation.getStartDate().getTime() && resa.getEndDate().getTime() > reservation.getEndDate().getTime()) {
+							String error = "Vous avez deja une reservation en cours dans cette periode.";
+							request.setAttribute("error", error);
+							doGet(request, response);
+						}
+					}
+				}
+			}
+		}
+		
 		request.setAttribute("resa", resa);
 		RequestDispatcher rd = request.getRequestDispatcher("CarAvailableServlet");
-		rd.forward(request,response);
+		rd.forward(request, response);
 		
-//		doGet(request, response);
-//		this.getServletContext().getRequestDispatcher( "/pages/cars.jsp" ).forward( request, response );
 	}
 
 }

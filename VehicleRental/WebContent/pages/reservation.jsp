@@ -1,3 +1,4 @@
+<%@page import="org.apache.jasper.tagplugins.jstl.core.If"%>
 <%@page import="com.campusnumerique.vehiclerental.entity.Client"%>
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
@@ -37,7 +38,7 @@
 		</div>
 
 		<div class="row">
-			<form method="post" action="./reservation">
+			<form class="col-12" method="post" action="./reservation?id=<% out.println(request.getParameter("id")); %>">
 				<fieldset>
 					<legend>When do you want to drive ? </legend>
 					<p>Choose when and where...</p>
@@ -52,6 +53,7 @@
 						type="submit" value="BOOK" class="sansLabel" /> <br />
 				</fieldset>
 			</form>
+			<div class="col-12" style="color: red"><% if (request.getAttribute("error") != null) {out.println(request.getAttribute("error"));} %></div>
 		</div>
 	</div>
 </body>
