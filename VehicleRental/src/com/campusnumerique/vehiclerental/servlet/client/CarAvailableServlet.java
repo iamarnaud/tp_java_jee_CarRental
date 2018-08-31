@@ -52,12 +52,24 @@ public class CarAvailableServlet extends HttpServlet {
 		//TODO nouvelle methode pour filter les voitures par age
 		ArrayList<Car> carslist = new ArrayList<Car>();
 		CarDAO carDAO = new CarDAO();
-		try {
-			carslist = (ArrayList<Car>) carDAO.findAll();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		
+		if (client.getAge() < 21){
+			carslist = (ArrayList<Car>) carDAO.findSmall();
 		}
+		else if (client.getAge() <= 25){
+			carslist = (ArrayList<Car>) carDAO.findMedium();
+		}
+		
+		else {
+			carslist = (ArrayList<Car>) carDAO.findAll();
+		}
+		
+//		try {
+//			carslist = (ArrayList<Car>) carDAO.findAll();
+//		} catch (SQLException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
 		
 		// on set l'attribut qu'on envoie à la vue
 		request.setAttribute("carslist", carslist);
