@@ -1,3 +1,4 @@
+<%@page import="com.campusnumerique.vehiclerental.entity.Reservation"%>
 <%@page import="com.campusnumerique.vehiclerental.entity.Car"%>
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -26,34 +27,46 @@
 </head>
 <body>
 
-	<%@ include file="header.jsp" %>
+	<%@ include file="header.jsp"%>
 
 	<div class="container" id="content">
 		<div class="row">
 			<h2>Available Cars</h2>
-			<table id="carTable" class="table table-striped">
-				<thead>
-					<tr>
-						<th>Brand</th>
-						<th>Model</th>
-						<th>Color</th>
-						<th>Plate Number</th>
-						<th>Price</th>
-						<th>Km price</th>
-						<th>Horse Power</th>
-						<th>Estimated Price</th>
-					</tr>
-				</thead>
-				<tbody>
-					<% 
-					ArrayList<Car> carslist = (ArrayList<Car>) request.getAttribute("carslist");
-					for(Car car : carslist){
-						out.println("<tr><td>"
-					+car.getBrand() + "</td> <td>" +car.getModel() + "</td> <td>" +car.getColor() + "</td> <td>" +car.getPlateNumber() + "</td> <td>" +car.getPrice() + "</td> <td>" +car.getKmPrice() + "</td> <td>" +car.getHorsePower() + "</td> <td>" + (car.getPrice() + car.getKmPrice()*Integer.parseInt(request.getParameter("kmestime"))) + " €" + "</td> </tr> ");
-					}
-					%>
-				</tbody>
-			</table>
+		</div>
+		<div class="row">
+			<form method="post" action="./validation">
+				<table id="carTable" class="table table-striped">
+					<thead>
+						<tr>
+							<th>Selected</th>
+							<th>Brand</th>
+							<th>Model</th>
+							<th>Color</th>
+							<th>Plate Number</th>
+							<th>Price</th>
+							<th>Km price</th>
+							<th>Horse Power</th>
+							<th>Estimated Price</th>
+						</tr>
+					</thead>
+					<tbody>
+						<%
+							ArrayList<Car> carslist = (ArrayList<Car>) request.getAttribute("carslist");
+							Reservation resa = (Reservation) request.getAttribute("resa");
+							for (Car car : carslist) {
+								out.println("<tr><td><input type='radio' name='carId' id='carId' value='" + car.getId() + "'></td> <td>"
+										+ car.getBrand() + "</td> <td>" + car.getModel() + "</td> <td>" + car.getColor() + "</td> <td>"
+										+ car.getPlateNumber() + "</td> <td>" + car.getPrice() + "</td> <td>" + car.getKmPrice()
+										+ "</td> <td>" + car.getHorsePower() + "</td> <td>"
+// 										+ (car.getPrice() + car.getKmPrice() * Integer.parseInt(request.getParameter("kmestime")))
+										+ car.getEstimatedPrice(resa.getEstimatedKm())
+										+ " €" + "</td> </tr> ");
+							}
+						%>
+					</tbody>
+				</table>
+				<button type="submit">Validate your car</button>
+			</form>
 		</div>
 	</div>
 </body>

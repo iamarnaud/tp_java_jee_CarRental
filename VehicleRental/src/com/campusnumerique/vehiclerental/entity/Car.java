@@ -13,6 +13,10 @@ public class Car {
 	private double kmPrice;
 	private int horsePower;
 	
+	public Car() {
+		
+	}
+	
 	public Car(int id, String brand, String model, String color, String plateNumber, double price, double kmPrice, int horsePower){
 		setId(id);
 		setBrand(brand);
@@ -84,5 +88,10 @@ public class Car {
 		infos.put("kmPrice", kmPrice);
 		infos.put("horsePower", horsePower);
 		return infos;
+	}
+	
+	public int getEstimatedPrice(int estimatedKm) {
+		int estimatedPrice = (int) (this.getPrice() + this.getKmPrice() * estimatedKm);
+		return estimatedPrice;
 	}
 }

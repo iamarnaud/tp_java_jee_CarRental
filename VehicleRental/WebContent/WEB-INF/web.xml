@@ -15,7 +15,8 @@
   <servlet-mapping>
     <servlet-name>CarServlet</servlet-name>
     <url-pattern>/cars</url-pattern>
-  </servlet-mapping><servlet>
+  </servlet-mapping>
+  <servlet>
     <servlet-name>CarAvailableServlet</servlet-name>
     <servlet-class>com.campusnumerique.vehiclerental.servlet.client.CarAvailableServlet</servlet-class>
   </servlet>
@@ -23,7 +24,7 @@
     <servlet-name>CarAvailableServlet</servlet-name>
     <url-pattern>/carsAvailable</url-pattern>
   </servlet-mapping>
-    <servlet>
+  <servlet>
     <servlet-name>ReservationServlet</servlet-name>
     <servlet-class>com.campusnumerique.vehiclerental.servlet.client.ReservationServlet</servlet-class>
   </servlet>
@@ -31,5 +32,12 @@
     <servlet-name>ReservationServlet</servlet-name>
     <url-pattern>/reservation</url-pattern>
   </servlet-mapping>
-  
+  <servlet>
+    <servlet-name>ValidationServlet</servlet-name>
+    <servlet-class>com.campusnumerique.vehiclerental.servlet.client.ValidationServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ValidationServlet</servlet-name>
+    <url-pattern>/validation</url-pattern>
+  </servlet-mapping>
 </web-app>

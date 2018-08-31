@@ -83,12 +83,6 @@ public class ReservationServlet extends HttpServlet {
 		resa.setEndDate(d);
 		
 		ReservationDAO resaDAO = new ReservationDAO();
-//		try {
-//			resaDAO.create(resa);
-//		} catch (SQLException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
 		
 		ArrayList<Reservation> resaList = new ArrayList<Reservation>();
 		try {
