@@ -70,10 +70,6 @@
 				<button type="submit">Validate your car</button>
 			</form>
 			<div>
-			<%
-				Reservation test = (Reservation) session.getAttribute("reservation");
-				out.println(test.getStartDate());
-			%></div>
 		</div>
 	</div>
 </body>
