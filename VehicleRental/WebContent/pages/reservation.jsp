@@ -42,15 +42,26 @@
 				<fieldset>
 					<legend>When do you want to drive ? </legend>
 					<p>Choose when and where...</p>
-					<input type="hidden" id="clientId" name="clientId" value="<% out.println(request.getParameter("id")); %>" /> <label
-						for="datedebut">Date début <span class="requis">*</span></label> <input
-						type="date" id="datedebut" name="datedebut" value="" size="20" />
-					<br /> <label for="datefin">Date fin <span class="requis">*</span></label>
+					<input type="hidden" id="clientId" name="clientId" value="<% out.println(request.getParameter("id")); %>" /> 
+					<label for="vehicleChoice">Choose your type of vehicle <span class="requis">*</span></label>
+					<select name="vehicleChoice" id="vehicleChoice" style="width: 135px">
+					  <option value="car" selected>Car</option>
+					  <option value="utilitary">Utilitary</option>
+					  <option value="motorBike">Motor Bike</option>
+					</select>
+					<br />
+					<label for="datedebut">Date début <span class="requis">*</span></label>
+					<input type="date" id="datedebut" name="datedebut" value="" size="20" />
+					<br />
+					<label for="datefin">Date fin <span class="requis">*</span></label>
 					<input type="date" id="datefin" name="datefin" value="" size="20" />
-					<br /> <label for="kmestime">KM estimés <span
-						class="requis">*</span></label> <input type="number" id="kmestime"
-						name="kmestime" value="1" min="1" size="20" /> <br /> <input
-						type="submit" value="BOOK" class="sansLabel" /> <br />
+					<br />
+					<label for="kmestime">KM estimés
+					<span class="requis">*</span></label> <input type="number" id="kmestime"
+						name="kmestime" value="1" min="1" size="20" />
+					<br />
+					<input type="submit" value="BOOK" class="sansLabel" />
+					<br />
 				</fieldset>
 			</form>
 			<div class="col-12" style="color: red"><% if (request.getAttribute("error") != null) {out.println(request.getAttribute("error"));} %></div>
