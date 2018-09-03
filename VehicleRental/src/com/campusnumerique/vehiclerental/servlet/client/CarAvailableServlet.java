@@ -99,21 +99,26 @@ public class CarAvailableServlet extends HttpServlet {
 					boolean available = true;
 					
 					for (Reservation carReservation : resacar) {
-						if (resa.getStartDate().getTime() >= carReservation.getStartDate().getTime()
-								&& resa.getStartDate().getTime() <= carReservation.getEndDate().getTime()) {
-							available = false;
-							break;	
-
-						} else if (resa.getEndDate().getTime() >= carReservation.getStartDate().getTime()
-								&& resa.getEndDate().getTime() <= carReservation.getEndDate().getTime()) {
+//						if (resa.getStartDate().getTime() >= carReservation.getStartDate().getTime()
+//								&& resa.getStartDate().getTime() <= carReservation.getEndDate().getTime()) {
+//							available = false;
+//							break;	
+//
+//						} else if (resa.getEndDate().getTime() >= carReservation.getStartDate().getTime()
+//								&& resa.getEndDate().getTime() <= carReservation.getEndDate().getTime()) {
+//							available = false;
+//							break;
+//						
+//						} else if (resa.getStartDate().getTime() <= carReservation.getStartDate().getTime()
+//								&& resa.getEndDate().getTime() >= carReservation.getEndDate().getTime()) {
+//							available = false;
+//							break;	
+//
+//						}
+						if (resa.getStartDate().getTime() <= carReservation.getEndDate().getTime()
+							&& resa.getEndDate().getTime() >= carReservation.getStartDate().getTime()) {
 							available = false;
 							break;
-						
-						} else if (resa.getStartDate().getTime() <= carReservation.getStartDate().getTime()
-								&& resa.getEndDate().getTime() >= carReservation.getEndDate().getTime()) {
-							available = false;
-							break;	
-
 						}
 					} if (available) {
 						availableCarList.add(car);

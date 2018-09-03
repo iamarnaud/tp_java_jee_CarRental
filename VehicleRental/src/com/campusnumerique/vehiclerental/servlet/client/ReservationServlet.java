@@ -119,11 +119,11 @@ public class ReservationServlet extends HttpServlet {
 					}
 				}
 			}
+			
+			request.setAttribute("resa", resa);
+			RequestDispatcher rd = request.getRequestDispatcher("CarAvailableServlet");
+			rd.forward(request, response);
 		}
-		
-		request.setAttribute("resa", resa);
-		RequestDispatcher rd = request.getRequestDispatcher("CarAvailableServlet");
-		rd.forward(request, response);
 		
 	}
 
