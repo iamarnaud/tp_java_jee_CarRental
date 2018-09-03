@@ -30,8 +30,16 @@ public class CarDAO extends DAO<Car>{
 	
 	@Override
 	public Car find(int id) throws SQLException {
-		// TODO Auto-generated method stub
-		return null;
+		Car car = new Car();  
+		
+		ResultSet result = this.connection.createStatement(
+		    ResultSet.TYPE_SCROLL_INSENSITIVE, 
+		    ResultSet.CONCUR_READ_ONLY
+		  ).executeQuery("SELECT * FROM car WHERE id = " + id);
+		if(result.first())
+			car = new Car(result.getInt("id"), result.getString("brand"), result.getString("model"), result.getString("color"), result.getString("plateNumber"), result.getDouble("price"), result.getDouble("kmPrice"), result.getInt("horsePower"));         
+		
+		return car;
 	}
 
 	@Override

@@ -8,11 +8,13 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.campusnumerique.vehiclerental.dao.CarDAO;
 import com.campusnumerique.vehiclerental.dao.ReservationDAO;
 import com.campusnumerique.vehiclerental.entity.Car;
 import com.campusnumerique.vehiclerental.entity.Reservation;
+import com.mysql.cj.Session;
 
 /**
  * Servlet implementation class ValidationServlet
@@ -43,14 +45,15 @@ public class ValidationServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		Reservation resa = new Reservation();
-		resa = (Reservation) request.getAttribute("resa");
+		HttpSession session = request.getSession();
+		resa = (Reservation) session.getAttribute("reservation");
 		int carId = Integer.parseInt(request.getParameter("carId"));
 		resa.setCarId(carId);
 		
 		CarDAO carDAO = new CarDAO();
 		Car car = new Car();
 		try {
-			car = carDAO.find(resa.getCarId());
+			car = (Car) carDAO.find(resa.getCarId());
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

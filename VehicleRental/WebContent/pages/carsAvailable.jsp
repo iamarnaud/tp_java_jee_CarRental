@@ -1,8 +1,11 @@
+<%@page import="com.campusnumerique.vehiclerental.bean.ReservationBean"%>
 <%@page import="com.campusnumerique.vehiclerental.entity.Reservation"%>
 <%@page import="com.campusnumerique.vehiclerental.entity.Car"%>
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+
+<jsp:useBean id="client" scope="session" class="com.campusnumerique.vehiclerental.bean.ClientBean" />
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -58,7 +61,6 @@
 										+ car.getBrand() + "</td> <td>" + car.getModel() + "</td> <td>" + car.getColor() + "</td> <td>"
 										+ car.getPlateNumber() + "</td> <td>" + car.getPrice() + "</td> <td>" + car.getKmPrice()
 										+ "</td> <td>" + car.getHorsePower() + "</td> <td>"
-// 										+ (car.getPrice() + car.getKmPrice() * Integer.parseInt(request.getParameter("kmestime")))
 										+ car.getEstimatedPrice(resa.getEstimatedKm())
 										+ " €" + "</td> </tr> ");
 							}
@@ -67,6 +69,11 @@
 				</table>
 				<button type="submit">Validate your car</button>
 			</form>
+			<div>
+			<%
+				Reservation test = (Reservation) session.getAttribute("reservation");
+				out.println(test.getStartDate());
+			%></div>
 		</div>
 	</div>
 </body>

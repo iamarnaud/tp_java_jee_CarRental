@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.campusnumerique.vehiclerental.dao.CarDAO;
 import com.campusnumerique.vehiclerental.dao.ClientDAO;
@@ -41,6 +42,8 @@ public class CarAvailableServlet extends HttpServlet {
 			throws ServletException, IOException {
 
 		Reservation resa = (Reservation) request.getAttribute("resa");
+		HttpSession session = request.getSession();
+		session.setAttribute("reservation", resa);
 		Client client = new Client();
 		ClientDAO clientDAO = new ClientDAO();
 		try {
