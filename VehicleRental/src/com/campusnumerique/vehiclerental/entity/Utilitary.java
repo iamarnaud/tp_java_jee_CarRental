@@ -26,8 +26,9 @@ public class Utilitary extends Vehicule{
 	}
 
 	@Override
-	public int getEstimatedPrice(int estimatedKm) {
-		int estimatedPrice = (int) (this.getVolume() * 0.05 * this.getKmPrice() * estimatedKm + this.getPrice());
+	public double getEstimatedPrice(int estimatedKm) {
+		double estKm = (double) estimatedKm;
+		double estimatedPrice = (double) (this.getVolume() * 0.05 * this.getKmPrice() * estKm + this.getPrice());
 		return estimatedPrice;
 	}
 

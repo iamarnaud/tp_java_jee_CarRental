@@ -26,8 +26,9 @@ public class Motorbike extends Vehicule{
 	}
 
 	@Override
-	public int getEstimatedPrice(int estimatedKm) {
-		int estimatedPrice = (int) (this.getCylinder() * 0.001 * this.getKmPrice() * estimatedKm + this.getPrice());
+	public double getEstimatedPrice(int estimatedKm) {
+		double estKm = (double) estimatedKm;
+		double estimatedPrice = (double) (this.getCylinder() * 0.001 * this.getKmPrice() * estKm + this.getPrice());
 		return estimatedPrice;
 	}
 

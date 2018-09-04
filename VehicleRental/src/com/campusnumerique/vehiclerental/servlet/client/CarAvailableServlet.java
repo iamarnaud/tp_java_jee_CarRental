@@ -42,8 +42,6 @@ public class CarAvailableServlet extends HttpServlet {
 			throws ServletException, IOException {
 
 		Reservation resa = (Reservation) request.getAttribute("resa");
-		HttpSession session = request.getSession();
-		session.setAttribute("reservation", resa);
 		Client client = new Client();
 		ClientDAO clientDAO = new ClientDAO();
 		try {

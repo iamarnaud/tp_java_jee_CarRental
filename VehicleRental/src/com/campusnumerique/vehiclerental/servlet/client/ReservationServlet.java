@@ -13,6 +13,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.campusnumerique.vehiclerental.dao.ReservationDAO;
 import com.campusnumerique.vehiclerental.entity.Reservation;
@@ -118,6 +119,9 @@ public class ReservationServlet extends HttpServlet {
 		}
 		request.setAttribute("resa", resa);
 		String choice = request.getParameter("vehicleChoice");
+		HttpSession session = request.getSession();
+		session.setAttribute("reservation", resa);
+		session.setAttribute("type", choice);
 		
 		if (choice.equals("car")) {
 			RequestDispatcher rd = request.getRequestDispatcher("CarAvailableServlet");

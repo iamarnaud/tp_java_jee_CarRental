@@ -14,6 +14,7 @@ import javax.servlet.http.HttpSession;
 import com.campusnumerique.vehiclerental.dao.CarDAO;
 import com.campusnumerique.vehiclerental.dao.ClientDAO;
 import com.campusnumerique.vehiclerental.dao.ReservationDAO;
+import com.campusnumerique.vehiclerental.dao.UtilitaryDAO;
 import com.campusnumerique.vehiclerental.entity.Car;
 import com.campusnumerique.vehiclerental.entity.Client;
 import com.campusnumerique.vehiclerental.entity.Reservation;
@@ -43,14 +44,19 @@ public class UtilitaryAvailableServlet extends HttpServlet {
 			throws ServletException, IOException {
 
 		Reservation resa = (Reservation) request.getAttribute("resa");
-		HttpSession session = request.getSession();
-		session.setAttribute("reservation", resa);
+//		HttpSession session = request.getSession();
+//		session.setAttribute("reservation", resa);
 
 		// creation l'attribut "liste d'utilitaires"
 		// TODO nouvelle methode pour filter les voitures par age
 		ArrayList<Utilitary> utilitarieslist = new ArrayList<Utilitary>();
 		UtilitaryDAO utilitaryDAO = new UtilitaryDAO();
-		utilitarieslist = utilitaryDAO.findAll();
+		try {
+			utilitarieslist = (ArrayList<Utilitary>) utilitaryDAO.findAll();
+		} catch (SQLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 
 		if (!utilitarieslist.isEmpty()) {
 			ArrayList<Utilitary> availableUtilitaryList = new ArrayList<Utilitary>();
@@ -84,7 +90,7 @@ public class UtilitaryAvailableServlet extends HttpServlet {
 			}
 
 			// on set l'attribut qu'on envoie à la vue
-			request.setAttribute("motoslist", availableUtilitaryList);
+			request.setAttribute("utilitarieslist", availableUtilitaryList);
 			this.getServletContext().getRequestDispatcher("/pages/carsAvailable.jsp").forward(request, response);
 			return; // return vide pour finir la méthode et permettre de passer
 					// à la suite.

@@ -40,8 +40,9 @@ public class Car extends Vehicule{
 //	}
 	
 	@Override
-	public int getEstimatedPrice(int estimatedKm) {
-		int estimatedPrice = (int) (this.getPrice() + this.getKmPrice() * estimatedKm);
+	public double getEstimatedPrice(int estimatedKm) {
+		double estKm = (double) estimatedKm;
+		double estimatedPrice = (double) (this.getPrice() + this.getKmPrice() * estKm);
 		return estimatedPrice;
 	}
 

@@ -74,7 +74,7 @@ public abstract class Vehicule {
 		return type;
 	}
 	public void setType(String type) {
-		this.type = "Car";
+		this.type = type;
 	}
 
 //	public JSONObject getInfos(){
@@ -90,5 +90,5 @@ public abstract class Vehicule {
 //		return infos;
 //	}
 	
-	public abstract int getEstimatedPrice(int estimatedKm) ;
+	public abstract double getEstimatedPrice(int estimatedKm) ;
 }

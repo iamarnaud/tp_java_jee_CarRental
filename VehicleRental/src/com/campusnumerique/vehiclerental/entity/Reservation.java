@@ -10,7 +10,7 @@ public class Reservation {
 	private Date endDate;
 	private int estimatedKm;
 	private int realKm;
-	private int price;
+	private double price;
 	
 	
 	public Reservation() {
@@ -19,7 +19,7 @@ public class Reservation {
 		setPrice(0);
 	}
 	
-	public Reservation(int clientId, int carId, Date startDate, Date endDate, int estimatedKm, int realKm, int price) {
+	public Reservation(int clientId, int carId, Date startDate, Date endDate, int estimatedKm, int realKm, double price) {
 		super();
 		this.clientId = clientId;
 		this.carId = carId;
@@ -67,10 +67,10 @@ public class Reservation {
 	public void setRealKm(int realKm) {
 		this.realKm = realKm;
 	}
-	public int getPrice() {
+	public double getPrice() {
 		return price;
 	}
-	public void setPrice(int price) {
+	public void setPrice(double price) {
 		this.price = price;
 	}
 	
