@@ -8,6 +8,7 @@
     <servlet-name>ClientServlet</servlet-name>
     <url-pattern>/clients</url-pattern>
   </servlet-mapping>
+  
   <servlet>
     <servlet-name>CarServlet</servlet-name>
     <servlet-class>com.campusnumerique.vehiclerental.servlet.client.CarServlet</servlet-class>
@@ -16,6 +17,7 @@
     <servlet-name>CarServlet</servlet-name>
     <url-pattern>/cars</url-pattern>
   </servlet-mapping>
+  
   <servlet>
     <servlet-name>CarAvailableServlet</servlet-name>
     <servlet-class>com.campusnumerique.vehiclerental.servlet.client.CarAvailableServlet</servlet-class>
@@ -24,6 +26,25 @@
     <servlet-name>CarAvailableServlet</servlet-name>
     <url-pattern>/carsAvailable</url-pattern>
   </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>UtilitaryAvailableServlet</servlet-name>
+    <servlet-class>com.campusnumerique.vehiclerental.servlet.client.UtilitaryAvailableServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UtilitaryAvailableServlet</servlet-name>
+    <url-pattern>/utilitariesAvailable</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>MotorBikeAvailableServlet</servlet-name>
+    <servlet-class>com.campusnumerique.vehiclerental.servlet.client.MotorBikeAvailableServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>MotorBikeAvailableServlet</servlet-name>
+    <url-pattern>/motorBikesAvailable</url-pattern>
+  </servlet-mapping>
+  
   <servlet>
     <servlet-name>ReservationServlet</servlet-name>
     <servlet-class>com.campusnumerique.vehiclerental.servlet.client.ReservationServlet</servlet-class>
@@ -32,6 +53,7 @@
     <servlet-name>ReservationServlet</servlet-name>
     <url-pattern>/reservation</url-pattern>
   </servlet-mapping>
+  
   <servlet>
     <servlet-name>ValidationServlet</servlet-name>
     <servlet-class>com.campusnumerique.vehiclerental.servlet.client.ValidationServlet</servlet-class>

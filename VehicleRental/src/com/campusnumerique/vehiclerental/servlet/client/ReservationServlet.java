@@ -92,11 +92,7 @@ public class ReservationServlet extends HttpServlet {
 			e.printStackTrace();
 		}
 		
-		if (resaList.isEmpty()) {
-			request.setAttribute("resa", resa);
-			RequestDispatcher rd = request.getRequestDispatcher("CarAvailableServlet");
-			rd.forward(request,response);
-		} else {
+		if (!resaList.isEmpty()) {
 			for (Reservation reservation : resaList) {
 				if (resa.getStartDate().getTime() >= reservation.getStartDate().getTime() && resa.getStartDate().getTime() <= reservation.getEndDate().getTime()) {
 					String error = "Vous avez deja une reservation en cours dans cette periode.";
@@ -118,11 +114,23 @@ public class ReservationServlet extends HttpServlet {
 						}
 					}
 				}
-			}
-			
-			request.setAttribute("resa", resa);
+			}		
+		}
+		request.setAttribute("resa", resa);
+		String choice = request.getParameter("vehicleChoice");
+		
+		if (choice.equals("car")) {
 			RequestDispatcher rd = request.getRequestDispatcher("CarAvailableServlet");
 			rd.forward(request, response);
+			return;
+		} else if (choice.equals("utilitary")) {
+			RequestDispatcher rd = request.getRequestDispatcher("UtilitaryAvailableServlet");
+			rd.forward(request, response);
+			return;
+		} else {
+			RequestDispatcher rd = request.getRequestDispatcher("MotorBikeAvailableServlet");
+			rd.forward(request, response);
+			return;
 		}
 		
 	}

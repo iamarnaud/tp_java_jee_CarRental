@@ -47,7 +47,7 @@
 					<select name="vehicleChoice" id="vehicleChoice" style="width: 135px">
 					  <option value="car" selected>Car</option>
 					  <option value="utilitary">Utilitary</option>
-					  <option value="motorBike">Motor Bike</option>
+					  <option value="motorbike">Motor Bike</option>
 					</select>
 					<br />
 					<label for="datedebut">Date début <span class="requis">*</span></label>
