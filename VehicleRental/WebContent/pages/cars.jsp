@@ -30,9 +30,12 @@
 
 	<div class="container" id="content">
 		<div class="row">
-			<h2>Car List</h2>
+			
+			<h2><% if (request.getAttribute("carslist") !=null) {
+				out.println("Cars List"); } %></h2>
+			
 			<table id="carTable" class="table table-striped">
-				<thead>
+				<thead>		
 					<tr>
 						<th>Brand</th>
 						<th>Model</th>
@@ -52,6 +55,7 @@
 					%>
 				</tbody>
 			</table>
+			
 		</div>
 	</div>
 </body>

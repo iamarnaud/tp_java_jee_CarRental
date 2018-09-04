@@ -13,7 +13,6 @@ public abstract class Vehicule {
 	private double kmPrice;
 	private String type;
 
-	
 	public Vehicule() {
 		
 	}
@@ -27,7 +26,6 @@ public abstract class Vehicule {
 		setPrice(price);
 		setKmPrice(kmPrice);
 		setType(type);
-
 	}
 	
 	public int getId() {
@@ -72,29 +70,25 @@ public abstract class Vehicule {
 	public void setKmPrice(double kmPrice) {
 		this.kmPrice = kmPrice;
 	}
-
-
 	public String getType() {
 		return type;
 	}
-
 	public void setType(String type) {
-		this.type = type;
+		this.type = "Car";
 	}
 
-	public JSONObject getInfos(){
-		JSONObject infos= new JSONObject();
-		infos.put("brand", brand);
-		infos.put("model", model);
-		infos.put("color", color);
-		infos.put("plateNumber", plateNumber);
-		infos.put("price", price);
-		infos.put("kmPrice", kmPrice);
-		infos.put("type", type);
-		
-
-		return infos;
-	}
+//	public JSONObject getInfos(){
+//		JSONObject infos= new JSONObject();
+//		infos.put("brand", brand);
+//		infos.put("model", model);
+//		infos.put("color", color);
+//		infos.put("plateNumber", plateNumber);
+//		infos.put("price", price);
+//		infos.put("kmPrice", kmPrice);
+//		infos.put("type", type);
+//		
+//		return infos;
+//	}
 	
 	public abstract int getEstimatedPrice(int estimatedKm) ;
 }
