@@ -1,3 +1,5 @@
+<%@page import="com.campusnumerique.vehiclerental.entity.Utilitary"%>
+<%@page import="com.campusnumerique.vehiclerental.entity.Motorbike"%>
 <%@page import="com.campusnumerique.vehiclerental.entity.Car"%>
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -31,8 +33,7 @@
 	<div class="container" id="content">
 		<div class="row">
 			
-			<h2><% if (request.getAttribute("carslist") !=null) {
-				out.println("Cars List"); } %></h2>
+			<h2>Cars List</h2>
 			
 			<table id="carTable" class="table table-striped">
 				<thead>		
@@ -51,6 +52,60 @@
 					ArrayList<Car> carslist = (ArrayList<Car>) request.getAttribute("carslist");
 					for(Car car : carslist){
 						out.println("<tr><td>" +car.getBrand() + "</td> <td>" +car.getModel() + "</td> <td>" +car.getColor() + "</td> <td>" +car.getPlateNumber() + "</td> <td>" +car.getPrice() + "</td> <td>" +car.getKmPrice() + "</td> <td>" +car.getHorsePower() + "</td></tr> ");
+					}
+					%>
+				</tbody>
+			</table>
+			
+		</div>
+		<div class="row">
+			
+			<h2>Motor Bikes List</h2>
+			
+			<table id="motoTable" class="table table-striped">
+				<thead>		
+					<tr>
+						<th>Brand</th>
+						<th>Model</th>
+						<th>Color</th>
+						<th>Plate Number</th>
+						<th>Price</th>
+						<th>Km price</th>
+						<th>Cylinder</th>
+					</tr>
+				</thead>
+				<tbody>
+					<% 
+					ArrayList<Motorbike> motoslist = (ArrayList<Motorbike>) request.getAttribute("motoslist");
+					for(Motorbike moto : motoslist){
+						out.println("<tr><td>" +moto.getBrand() + "</td> <td>" +moto.getModel() + "</td> <td>" +moto.getColor() + "</td> <td>" +moto.getPlateNumber() + "</td> <td>" +moto.getPrice() + "</td> <td>" +moto.getKmPrice() + "</td> <td>" +moto.getCylinder() + "</td></tr> ");
+					}
+					%>
+				</tbody>
+			</table>
+			
+		</div>
+		<div class="row">
+			
+			<h2>Utilitaries List</h2>
+			
+			<table id="utilitaryTable" class="table table-striped">
+				<thead>		
+					<tr>
+						<th>Brand</th>
+						<th>Model</th>
+						<th>Color</th>
+						<th>Plate Number</th>
+						<th>Price</th>
+						<th>Km price</th>
+						<th>Volume</th>
+					</tr>
+				</thead>
+				<tbody>
+					<% 
+					ArrayList<Utilitary> utilitarieslist = (ArrayList<Utilitary>) request.getAttribute("utilitarieslist");
+					for(Utilitary utilitary : utilitarieslist){
+						out.println("<tr><td>" +utilitary.getBrand() + "</td> <td>" +utilitary.getModel() + "</td> <td>" +utilitary.getColor() + "</td> <td>" +utilitary.getPlateNumber() + "</td> <td>" +utilitary.getPrice() + "</td> <td>" +utilitary.getKmPrice() + "</td> <td>" +utilitary.getVolume() + "</td></tr> ");
 					}
 					%>
 				</tbody>

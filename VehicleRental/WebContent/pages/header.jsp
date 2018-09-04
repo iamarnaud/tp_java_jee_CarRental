@@ -3,9 +3,9 @@
 		src="resources/images/delorean.png" />
 	</a>
 	<ul class="nav nav-pills">
-		<li class="nav-item"><a class="nav-link" href="./clients">Client
+		<li class="nav-item"><a class="nav-link" href="./clients">Clients
 				List</a></li>
-		<li class="nav-item"><a class="nav-link" href="./cars">Car
+		<li class="nav-item"><a class="nav-link" href="./cars">Vehicles
 				List</a></li>
 		<li class="nav-item"><a class="nav-link" href="./reservation">
 				Book a car</a></li>

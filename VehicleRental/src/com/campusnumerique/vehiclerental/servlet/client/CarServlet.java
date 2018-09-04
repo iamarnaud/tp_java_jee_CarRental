@@ -11,7 +11,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.campusnumerique.vehiclerental.dao.CarDAO;
+import com.campusnumerique.vehiclerental.dao.MotorbikeDAO;
+import com.campusnumerique.vehiclerental.dao.UtilitaryDAO;
 import com.campusnumerique.vehiclerental.entity.Car;
+import com.campusnumerique.vehiclerental.entity.Motorbike;
+import com.campusnumerique.vehiclerental.entity.Utilitary;
 
 /**
  * Servlet implementation class CarServlet
@@ -44,6 +48,26 @@ public class CarServlet extends HttpServlet {
 		} 
 		// on set l'attribut qu'on envoie à la vue
 		request.setAttribute("carslist", carslist);
+		
+		ArrayList<Motorbike> motoslist = new ArrayList<Motorbike>();
+		MotorbikeDAO motorbikeDAO = new MotorbikeDAO();
+		try {
+			motoslist = (ArrayList<Motorbike>) motorbikeDAO.findAll();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		request.setAttribute("motoslist", motoslist);
+		
+		ArrayList<Utilitary> utilitarieslist = new ArrayList<Utilitary>();
+		UtilitaryDAO utilitaryDAO = new UtilitaryDAO();
+		try {
+			utilitarieslist = (ArrayList<Utilitary>) utilitaryDAO.findAll();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		request.setAttribute("utilitarieslist", utilitarieslist);
 		
 		this.getServletContext().getRequestDispatcher( "/pages/cars.jsp" ).forward( request, response );
 	}
