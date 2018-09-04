@@ -6,38 +6,38 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.campusnumerique.vehiclerental.entity.Client;
-import com.campusnumerique.vehiclerental.entity.Car;
+import com.campusnumerique.vehiclerental.entity.Motorbike;
 
-public class CarDAO extends DAO<Car>{
+public class MotorbikeDAO extends DAO<Motorbike>{
 
 	@Override
-	public boolean create(Car obj) {
+	public boolean create(Motorbike obj) {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
-	public boolean delete(Car obj) {
+	public boolean delete(Motorbike obj) {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
-	public boolean update(Car obj) {
+	public boolean update(Motorbike obj) {
 		// TODO Auto-generated method stub
 		return false;
 	}
 	
 	@Override
-	public Car find(int id) throws SQLException {
-		Car car = new Car();  
+	public Motorbike find(int id) throws SQLException {
+		Motorbike motorbike = new Motorbike();  
 		
 		ResultSet result = this.connection.createStatement(
 		    ResultSet.TYPE_SCROLL_INSENSITIVE, 
 		    ResultSet.CONCUR_READ_ONLY
-		  ).executeQuery("SELECT * FROM car WHERE type = 'car' AND id = " + id);   
+		  ).executeQuery("SELECT * FROM car WHERE type = 'motorbike' AND id = " + id);
 		if(result.first())
-			car = new Car(
+			motorbike = new Motorbike(
 					result.getInt("id"), 
 					result.getString("brand"), 
 					result.getString("model"), 
@@ -46,21 +46,21 @@ public class CarDAO extends DAO<Car>{
 					result.getDouble("price"), 
 					result.getDouble("kmPrice"), 
 					result.getString("type"), 
-					result.getInt("horsePower"));         
+					result.getInt("cylinder"));         
 		
-		return car;
+		return motorbike;
 	}
 
 	@Override
-	public List<Car> findAll() throws SQLException{
-		ArrayList<Car> cars = new ArrayList<Car>();
+	public List<Motorbike> findAll() throws SQLException{
+		ArrayList<Motorbike> motorbikes = new ArrayList<Motorbike>();
 		
 		ResultSet result = this.connection.createStatement(
 		    ResultSet.TYPE_SCROLL_INSENSITIVE, 
 		    ResultSet.CONCUR_READ_ONLY
-		  ).executeQuery("SELECT * FROM car WHERE type='car'");
+		  ).executeQuery("SELECT * FROM car WHERE type='motorbike'");
 		while(result.next()){ 
-			Car car = new Car(
+			Motorbike motorbike = new Motorbike(
 					result.getInt("id"), 
 					result.getString("brand"), 
 					result.getString("model"), 
@@ -69,21 +69,22 @@ public class CarDAO extends DAO<Car>{
 					result.getDouble("price"), 
 					result.getDouble("kmPrice"), 
 					result.getString("type"), 
-					result.getInt("horsePower"));    
-			cars.add(car);
+					result.getInt("cylinder"));    
+			motorbikes.add(motorbike);
 		}
-		return cars;
+		return motorbikes;
 	}
 	
-	public List<Car> findByHorsePower(int horsePower) throws SQLException{
-		ArrayList<Car> cars = new ArrayList<Car>();
+	public List<Motorbike> findByCylinder(int 
+			Cylinder) throws SQLException{
+		ArrayList<Motorbike> motorbikes = new ArrayList<Motorbike>();
 		
 		ResultSet result = this.connection.createStatement(
 		    ResultSet.TYPE_SCROLL_INSENSITIVE, 
 		    ResultSet.CONCUR_READ_ONLY
-		  ).executeQuery("SELECT * FROM car WHERE type='car' AND horsePower < " + horsePower);
+		  ).executeQuery("SELECT * FROM car WHERE type = 'motorbike' AND cylinder < " + Cylinder);
 		while(result.next()){ 
-			Car car = new Car(
+			Motorbike motorbike = new Motorbike(
 					result.getInt("id"), 
 					result.getString("brand"), 
 					result.getString("model"), 
@@ -92,10 +93,10 @@ public class CarDAO extends DAO<Car>{
 					result.getDouble("price"), 
 					result.getDouble("kmPrice"), 
 					result.getString("type"), 
-					result.getInt("horsePower"));    
-			cars.add(car);
+					result.getInt("cylinder"));    
+			motorbikes.add(motorbike);
 		}
-		return cars;
+		return motorbikes;
 	}
 	
 
