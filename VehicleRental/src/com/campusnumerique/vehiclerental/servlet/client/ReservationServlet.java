@@ -83,6 +83,13 @@ public class ReservationServlet extends HttpServlet {
 		}
 		resa.setEndDate(d);
 		
+		if (resa.getEndDate().getTime() < resa.getStartDate().getTime()) {
+			String wrongDates = "La date de fin doit etre posterieure à la date de début";
+			request.setAttribute("error", wrongDates);
+			doGet(request, response);
+			return;
+		}
+		
 		ReservationDAO resaDAO = new ReservationDAO();
 		
 		ArrayList<Reservation> resaList = new ArrayList<Reservation>();

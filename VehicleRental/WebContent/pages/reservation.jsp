@@ -51,16 +51,16 @@
 					</select>
 					<br />
 					<label for="datedebut">Date début <span class="requis">*</span></label>
-					<input type="date" id="datedebut" name="datedebut" value="" size="20" />
+					<input type="date" id="datedebut" name="datedebut" value="" size="20" required />
 					<br />
 					<label for="datefin">Date fin <span class="requis">*</span></label>
-					<input type="date" id="datefin" name="datefin" value="" size="20" />
+					<input type="date" id="datefin" name="datefin" value="" size="20" required />
 					<br />
 					<label for="kmestime">KM estimés
 					<span class="requis">*</span></label> <input type="number" id="kmestime"
 						name="kmestime" value="1" min="1" size="20" />
 					<br />
-					<input type="submit" value="BOOK" class="sansLabel" />
+					<input type="submit" value="BOOK" class="sansLabel" required />
 					<br />
 				</fieldset>
 			</form>
