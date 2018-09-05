@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.campusnumerique.vehiclerental.bean.ClientBean;
 import com.campusnumerique.vehiclerental.dao.ReservationDAO;
 import com.campusnumerique.vehiclerental.entity.Reservation;
 
@@ -49,15 +50,18 @@ public class ReservationServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		
 		Reservation resa = new Reservation();
+		HttpSession session = request.getSession();
+		ClientBean clientBean = (ClientBean) session.getAttribute("client");
+		
 		
 		int nb= 0;
-		try{
-			nb = Integer.parseInt(request.getParameter("clientId").trim());
-		} catch(NumberFormatException e) {
-			e.printStackTrace();
-		}
-		
-		resa.setClientId(nb);
+//		try{
+//			nb = Integer.parseInt(request.getParameter("clientId").trim());
+//		} catch(NumberFormatException e) {
+//			e.printStackTrace();
+//		}
+//		resa.setClientId(nb);
+		resa.setClientId(clientBean.getClient().getId());
 		
 		try{
 			nb = Integer.parseInt(request.getParameter("kmestime"));
@@ -126,7 +130,6 @@ public class ReservationServlet extends HttpServlet {
 		}
 		request.setAttribute("resa", resa);
 		String choice = request.getParameter("vehicleChoice");
-		HttpSession session = request.getSession();
 		session.setAttribute("reservation", resa);
 		session.setAttribute("type", choice);
 		

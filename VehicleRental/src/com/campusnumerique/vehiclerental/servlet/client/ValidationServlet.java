@@ -101,7 +101,8 @@ public class ValidationServlet extends HttpServlet {
 			e.printStackTrace();
 		}
 
-		doGet(request, response);
+		RequestDispatcher rd = request.getRequestDispatcher("ResaListServlet");
+		rd.forward(request, response);
 	}
 
 }

@@ -7,7 +7,9 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.campusnumerique.vehiclerental.bean.ReservationBean;
 import com.campusnumerique.vehiclerental.entity.Car;
+import com.campusnumerique.vehiclerental.entity.Client;
 import com.campusnumerique.vehiclerental.entity.Reservation;
 
 public class ReservationDAO  extends DAO<Reservation> {
@@ -52,6 +54,36 @@ public class ReservationDAO  extends DAO<Reservation> {
 		// TODO Auto-generated method stub
 		return null;
 	}
+	
+	public List<ReservationBean> findClientResas(int id) throws SQLException {
+		
+		ArrayList<ReservationBean> resas = new ArrayList<ReservationBean>();
+		
+		ResultSet result = this.connection.createStatement(
+		    ResultSet.TYPE_SCROLL_INSENSITIVE, 
+		    ResultSet.CONCUR_READ_ONLY
+		  ).executeQuery("SELECT * FROM reservation INNER JOIN car ON reservation.carId = car.id "
+				  			+ "INNER JOIN client ON reservation.clientId = client.id WHERE clientId = " + id);
+		while(result.next()){ 
+			Reservation resa = new Reservation(id, result.getInt("reservation.carId"), result.getDate("reservation.startDate"), result.getDate("reservation.endDate"), result.getInt("reservation.estimatedKm"), result.getInt("reservation.realKm"), result.getInt("reservation.price"));    
+			Car car = new Car(
+					result.getInt("id"), 
+					result.getString("brand"), 
+					result.getString("model"), 
+					result.getString("color"), 
+					result.getString("plateNumber"), 
+					result.getDouble("price"), 
+					result.getDouble("kmPrice"), 
+					result.getString("type"), 
+					result.getInt("horsePower"));
+			Client client = new Client(result.getInt("client.id"), result.getString("client.login"), result.getString("client.firstName"), result.getString("client.lastName"), result.getString("client.mail"), result.getDate("client.dob"), result.getDate("client.licenceDate"), result.getString("client.licenceNumber"));
+			ReservationBean resaBean = new ReservationBean(resa, car, client);
+			resas.add(resaBean);
+		}
+		return resas;
+	}
+	
+
 
 	@Override
 	public List<Reservation> findAll() throws SQLException {
