@@ -22,7 +22,7 @@
 	src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
 
 <!-- General -->
-<link rel="stylesheet" href="resources/css/global.css" />
+<link rel="stylesheet" type="text/css" href="resources/css/test.css" />
 <!--  <script src="../resources/js/car.js"></script> -->
 </head>
 <body>
@@ -56,7 +56,7 @@
 	                <p style="color: red">${error}</p>
 	            </fieldset>
 			</form>
-			<div></div>
 		</div>
+	</div>
 </body>
 </html>

@@ -37,11 +37,16 @@ public class RestrictionFilter implements Filter {
          * Si l'objet utilisateur n'existe pas dans la session en cours, alors
          * l'utilisateur n'est pas connecté.
          */
-        if ( session.getAttribute("client") == null || client.getLogin().equals("NoUserConnected") ) {
+    	System.out.println(request.getRequestURI());
+    	if (request.getRequestURI().startsWith("/VehicleRental/resources/")) {
+        	System.out.println("test");
+            chain.doFilter( request, response );
+        } else if ( session.getAttribute("client") == null || client.getLogin().equals("NoUserConnected") ) {
             /* Redirection vers la page publique */
         	RequestDispatcher rd = request.getRequestDispatcher("ConnexionServlet");
 			rd.forward(request, response);
         } else {
+        
             /* Affichage de la page restreinte */
             chain.doFilter( request, response );
         }
