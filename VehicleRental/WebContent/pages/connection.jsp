@@ -25,7 +25,7 @@
 <link rel="stylesheet" type="text/css" href="resources/css/global.css" />
 <!-- <c:url value='resources/css/global.css'/> -->
 <!--  <script src="../resources/js/car.js"></script> -->
-<link rel="shortcut icon" type="image/x-icon" href="resources/images/delorean-square.png" />
+<link rel="shortcut icon" type="image/x-icon" href="resources/images/deloreansquare.png" />
 </head>
 <body>
 
@@ -42,7 +42,7 @@
 	                <p>Vous pouvez vous connecter via ce formulaire.</p>
 	
 	                <label for="nom">Adresse email <span class="requis">*</span></label>
-	                <input type="email" id="email" name="email" value="" size="20" maxlength="60" />
+	                <input type="email" id="email" name="email" value="${ mail }" size="20" maxlength="60" />
 	                <span class="erreur" style="color: red">${connexion.errors['email']}</span>
 	                <br />
 	

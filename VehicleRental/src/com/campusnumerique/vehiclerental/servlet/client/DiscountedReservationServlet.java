@@ -64,7 +64,7 @@ public class DiscountedReservationServlet extends HttpServlet {
 			String error = "Cette reservation ne remplie pas les conditions donnant droit à une reduction.";
 			request.setAttribute("resas", resas);
 			request.setAttribute("error", error);
-			this.getServletContext().getRequestDispatcher( "/pages/allReservations.jsp" ).forward( request, response );
+			this.getServletContext().getRequestDispatcher( "/pages/agentPages/allReservations.jsp" ).forward( request, response );
 		}
 		
 		

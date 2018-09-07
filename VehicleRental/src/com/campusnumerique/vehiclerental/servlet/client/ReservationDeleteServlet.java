@@ -33,22 +33,32 @@ public class ReservationDeleteServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		int index = Integer.parseInt(request.getParameter("id"));
+
 		HttpSession session = request.getSession();
 		ArrayList<ReservationBean> resas = (ArrayList<ReservationBean>) session.getAttribute("resas");
-		ReservationDAO resaDAO = new ReservationDAO();
-		ReservationBean deletedResa = resas.get(index);
-		resaDAO.delete(deletedResa.getResa());
-		try {
-			resas = (ArrayList<ReservationBean>) resaDAO.findAllResas();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		ReservationDAO resaDAO = new ReservationDAO();	
+		int index = 0;
+		if (request.getParameter("id") != null) {
+			index = Integer.parseInt(request.getParameter("id"));
 		}
 		
-		request.setAttribute("resas", resas);
-		this.getServletContext().getRequestDispatcher( "/pages/allReservations.jsp" ).forward( request, response );
+		if (resas.size() > 0 && resas.size() < index) {
+			ReservationBean deletedResa = resas.get(index);
+			resaDAO.delete(deletedResa.getResa());
+			try {
+				resas = (ArrayList<ReservationBean>) resaDAO.findAllResas();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			session.removeAttribute("resas");
+			request.setAttribute("resas", resas);
+			this.getServletContext().getRequestDispatcher( "/pages/agentPages/allReservations.jsp" ).forward( request, response );	
+		} else {
+			String error = "La reservation que vous essayez de supprimer n'existe pas.";
+        	request.setAttribute("error", error);
+			request.getRequestDispatcher("ResaListServlet").forward(request, response);	
+		}
 	}
 
 	/**

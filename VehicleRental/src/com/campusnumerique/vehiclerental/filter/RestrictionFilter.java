@@ -31,9 +31,9 @@ public class RestrictionFilter implements Filter {
          	
     	/* Non-filtrage des ressources statiques */
         String chemin = request.getRequestURI().substring( request.getContextPath().length() );
-        System.out.println(chemin);
+//        System.out.println(chemin);
         if ( chemin.startsWith( "/resources" ) ) {
-        	System.out.println("test");
+//        	System.out.println("test");
             chain.doFilter( request, response );
             return;
         }
@@ -46,7 +46,6 @@ public class RestrictionFilter implements Filter {
          * Si l'objet utilisateur n'existe pas dans la session en cours, alors
          * l'utilisateur n'est pas connecté.
          */
-//    	System.out.println(request.getRequestURI());
     	if ( session.getAttribute("client") == null || client.getLogin().equals("NoUserConnected") ) {
             /* Redirection vers la page publique */
         	RequestDispatcher rd = request.getRequestDispatcher("ConnexionServlet");

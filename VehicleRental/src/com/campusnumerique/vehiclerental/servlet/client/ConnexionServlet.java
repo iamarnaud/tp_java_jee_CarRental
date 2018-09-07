@@ -54,6 +54,8 @@ public class ConnexionServlet extends HttpServlet {
 		
 		if (!connexion.getErrors().isEmpty()) {
 			request.setAttribute("connexion", connexion);
+			String mail = request.getParameter("email");
+			request.setAttribute("mail", mail);
 			doGet(request, response);
 			return;
 		}
@@ -80,6 +82,10 @@ public class ConnexionServlet extends HttpServlet {
 		}
 		if (client.getLogin().equals("guest")) {
 			String error = "Mot de passe et/ou email invalide(s)";
+//			ClientBean unconnectedClient = new ClientBean();
+//			unconnectedClient.setClient(client);
+			String mail = request.getParameter("email");
+			request.setAttribute("mail", mail);
 			request.setAttribute("error", error);
 			doGet(request, response);
 			return;

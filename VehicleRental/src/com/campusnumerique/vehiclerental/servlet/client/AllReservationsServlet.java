@@ -45,7 +45,7 @@ public class AllReservationsServlet extends HttpServlet {
 			e.printStackTrace();
 		}
 		request.setAttribute("resas", resas);
-		this.getServletContext().getRequestDispatcher( "/pages/allReservations.jsp" ).forward( request, response );
+		this.getServletContext().getRequestDispatcher( "/pages/agentPages/allReservations.jsp" ).forward( request, response );
 	}
 
 	/**

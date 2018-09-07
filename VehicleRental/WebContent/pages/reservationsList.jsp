@@ -27,7 +27,7 @@
 <!-- General -->
 <link rel="stylesheet" href="resources/css/global.css" />
 <!-- 	<script src="../resources/js/client.js"></script> -->
-<link rel="shortcut icon" type="image/x-icon" href="resources/images/delorean.png" />
+<link rel="shortcut icon" type="image/x-icon" href="resources/images/deloreansquare.png" />
 </head>
 <body>
 
@@ -44,17 +44,29 @@
 						<th>End Date</th>
 						<th>Estimated Km</th>
 						<th>Price</th>
+						<th>Action</th>
 					</tr>
 				</thead>
 				<tbody>
 					<%
  					ArrayList<ReservationBean> resas = (ArrayList<ReservationBean>) request.getAttribute("resas");
+					session.setAttribute("resas", resas);
+					int i = 0;
  					for(ReservationBean resa : resas) {
- 						out.println("<tr><td><a href='./'>" + resa.getCar().getBrand()+ " "+ resa.getCar().getModel() + "</a></td> <td>" + resa.getResa().getStartDate() + "</td> <td>" + resa.getResa().getEndDate() + "</td> <td>" + resa.getResa().getEstimatedKm() + "</td> <td>" + resa.getResa().getPrice() + " &euro;</td></tr>");
+ 						out.println("<tr><td><a href='./'>" + resa.getCar().getBrand()+ " "+ resa.getCar().getModel() + "</a></td> <td>" + resa.getResa().getStartDate() + "</td> <td>" + resa.getResa().getEndDate() + "</td> <td>" + resa.getResa().getEstimatedKm() + "</td>");
+ 						if (resa.getResa().isDiscounted()){
+ 							out.println(" <td style='color: red'>" + resa.getResa().getPrice() + " &euro; *</td>");
+ 						} else {
+ 							out.println(" <td>" + resa.getResa().getPrice() + " &euro;</td>");
+ 						}
+ 						out.println(" <td><a href='./deleteReservation?id="+i+"'>delete</a></td></tr>");
+ 						i++;
  					}
  					%>
 				</tbody>
 			</table>
+			<p class="col-12">* Les prix ayant beneficiés du reduction sont affichés en <span style="color: red"> rouge.</></span></p>
+			<p class="col-12" style="color: red; font-size: 1.8em">${error}</p>
 		</div>
 	</div>
 </body>

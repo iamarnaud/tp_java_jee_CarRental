@@ -27,7 +27,7 @@
 <!-- General -->
 <link rel="stylesheet" href="resources/css/global.css" />
 <!-- 	<script src="../resources/js/client.js"></script> -->
-<link rel="shortcut icon" type="image/x-icon" href="resources/images/delorean.png" />
+<link rel="shortcut icon" type="image/x-icon" href="resources/images/deloreansquare.png" />
 </head>
 <body>
 <div>Well done !!!!!!!</div>

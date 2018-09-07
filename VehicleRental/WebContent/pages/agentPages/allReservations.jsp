@@ -27,11 +27,11 @@
 <!-- General -->
 <link rel="stylesheet" href="resources/css/global.css" />
 <!-- 	<script src="../resources/js/client.js"></script> -->
-<link rel="shortcut icon" type="image/x-icon" href="resources/images/delorean-square.png" />
+<link rel="shortcut icon" type="image/x-icon" href="resources/images/deloreansquare.png" />
 </head>
 <body>
 
-	<%@ include file="header.jsp"%>
+	<%@ include file="../header.jsp"%>
 
 	<div class="container" id="content">
 		<div class="row">

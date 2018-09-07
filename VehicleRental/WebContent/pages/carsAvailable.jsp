@@ -30,7 +30,7 @@
 <!-- General -->
 <link rel="stylesheet" href="<c:url value="resources/css/global.css"/>" />
 <!--  <script src="../resources/js/car.js"></script> -->
-<link rel="shortcut icon" type="image/x-icon" href="resources/images/delorean.png" />
+<link rel="shortcut icon" type="image/x-icon" href="resources/images/deloreansquare.png" />
 </head>
 <body>
 
