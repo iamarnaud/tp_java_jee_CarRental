@@ -2,6 +2,8 @@
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+	
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -26,36 +28,55 @@
 </head>
 <body>
 
-	<%@ include file="header.jsp" %>
+	<%@ include file="header.jsp"%>
 
 	<div class="container" id="content">
 		<div class="row">
-			
-			<h2><% if (request.getAttribute("carslist") !=null) {
-				out.println("Cars List"); } %></h2>
-			
+
+			<h2>Vehicles List</h2>
+
 			<table id="carTable" class="table table-striped">
-				<thead>		
+				<thead>
 					<tr>
 						<th>Brand</th>
 						<th>Model</th>
 						<th>Color</th>
 						<th>Plate Number</th>
 						<th>Price</th>
-						<th>Km price</th>
+						<th>Kmprice</th>
 						<th>Horse Power</th>
 					</tr>
 				</thead>
 				<tbody>
-					<% 
-					ArrayList<Car> carslist = (ArrayList<Car>) request.getAttribute("carslist");
-					for(Car car : carslist){
-						out.println("<tr><td>" +car.getBrand() + "</td> <td>" +car.getModel() + "</td> <td>" +car.getColor() + "</td> <td>" +car.getPlateNumber() + "</td> <td>" +car.getPrice() + "</td> <td>" +car.getKmPrice() + "</td> <td>" +car.getHorsePower() + "</td></tr> ");
-					}
-					%>
+					<c:forEach items="${carslist}" var="car">
+						<tr>
+							<td>${car.brand}</td>
+							<td>${car.model}</td>
+							<td>${car.color}</td>
+							<td>${car.plateNumber}</td>
+							<td>${car.price}</td>
+							<td>${car.kmPrice}</td>
+							<td>${car.horsePower}</td>
+						</tr>
+					</c:forEach>
+
+<!-- 					ArrayList -->
+<!-- 					<Car> carslist = (ArrayList<Car>) -->
+<!-- 					request.getAttribute("carslist"); for(Car car : carslist) -->
+<!-- 					out.println(" -->
+<!-- 					<tr> -->
+<!-- 						<td>" +car.getBrand() + "</td> -->
+<!-- 						<td>" +car.getModel() + "</td> -->
+<!-- 						<td>" +car.getColor() + "</td> -->
+<!-- 						<td>" +car.getPlateNumber() + "</td> -->
+<!-- 						<td>" +car.getPrice() + "</td> -->
+<!-- 						<td>" +car.getKmPrice() + "</td> -->
+<!-- 						<td>" +car.getHorsePower() + "</td> -->
+<!-- 					</tr> -->
+<!-- 					"); }  -->
 				</tbody>
 			</table>
-			
+
 		</div>
 	</div>
 </body>

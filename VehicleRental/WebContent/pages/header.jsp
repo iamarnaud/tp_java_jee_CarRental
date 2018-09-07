@@ -8,9 +8,10 @@
 		<li class="nav-item"><a class="nav-link" href="./cars">Car
 				List</a></li>
 		<li class="nav-item"><a class="nav-link" href="./reservation">
-				Book a car</a></li>
+				Book a car</a></li>						
 	</ul>
 	<ul class="nav navbar-nav navbar-right">
-		<li>User Connected:</li>
+		<li>User Connected: ${connectedClient.login} </li>
+		<li class="nav_item"><a href="./deconnexion"> LogOut </a></li>
 	</ul>
 </nav>

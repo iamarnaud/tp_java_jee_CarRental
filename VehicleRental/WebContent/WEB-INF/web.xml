@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" version="3.0">
+  <session-config>
+    <session-timeout>1</session-timeout>
+  </session-config>
   <servlet>
     <servlet-name>ClientServlet</servlet-name>
     <servlet-class>com.campusnumerique.vehiclerental.servlet.client.ClientServlet</servlet-class>
@@ -8,7 +11,6 @@
     <servlet-name>ClientServlet</servlet-name>
     <url-pattern>/clients</url-pattern>
   </servlet-mapping>
-  
   <servlet>
     <servlet-name>CarServlet</servlet-name>
     <servlet-class>com.campusnumerique.vehiclerental.servlet.client.CarServlet</servlet-class>
@@ -17,7 +19,6 @@
     <servlet-name>CarServlet</servlet-name>
     <url-pattern>/cars</url-pattern>
   </servlet-mapping>
-  
   <servlet>
     <servlet-name>CarAvailableServlet</servlet-name>
     <servlet-class>com.campusnumerique.vehiclerental.servlet.client.CarAvailableServlet</servlet-class>
@@ -26,7 +27,6 @@
     <servlet-name>CarAvailableServlet</servlet-name>
     <url-pattern>/carsAvailable</url-pattern>
   </servlet-mapping>
-  
   <servlet>
     <servlet-name>UtilitaryAvailableServlet</servlet-name>
     <servlet-class>com.campusnumerique.vehiclerental.servlet.client.UtilitaryAvailableServlet</servlet-class>
@@ -35,7 +35,6 @@
     <servlet-name>UtilitaryAvailableServlet</servlet-name>
     <url-pattern>/utilitariesAvailable</url-pattern>
   </servlet-mapping>
-  
   <servlet>
     <servlet-name>MotorBikeAvailableServlet</servlet-name>
     <servlet-class>com.campusnumerique.vehiclerental.servlet.client.MotorBikeAvailableServlet</servlet-class>
@@ -44,7 +43,6 @@
     <servlet-name>MotorBikeAvailableServlet</servlet-name>
     <url-pattern>/motorBikesAvailable</url-pattern>
   </servlet-mapping>
-  
   <servlet>
     <servlet-name>ReservationServlet</servlet-name>
     <servlet-class>com.campusnumerique.vehiclerental.servlet.client.ReservationServlet</servlet-class>
@@ -53,7 +51,6 @@
     <servlet-name>ReservationServlet</servlet-name>
     <url-pattern>/reservation</url-pattern>
   </servlet-mapping>
-  
   <servlet>
     <servlet-name>ValidationServlet</servlet-name>
     <servlet-class>com.campusnumerique.vehiclerental.servlet.client.ValidationServlet</servlet-class>
@@ -62,4 +59,31 @@
     <servlet-name>ValidationServlet</servlet-name>
     <url-pattern>/validation</url-pattern>
   </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>ConnexionServlet</servlet-name>
+    <servlet-class>com.campusnumerique.vehiclerental.servlet.client.ConnexionServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ConnexionServlet</servlet-name>
+    <url-pattern>/connexion</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>DeconnexionServlet</servlet-name>
+    <servlet-class>com.campusnumerique.vehiclerental.servlet.client.DeconnexionServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DeconnexionServlet</servlet-name>
+    <url-pattern>/deconnexion</url-pattern>
+  </servlet-mapping>
+  
+  <filter> 
+  	<filter-name>ConnexionFilter</filter-name>
+  	<filter-class>com.campusnumerique.vehiclerental.filters.ConnexionFilter</filter-class>
+  </filter>
+  <filter-mapping>
+  	<filter-name>ConnexionFilter</filter-name>
+  	<url-pattern>/*</url-pattern>
+  </filter-mapping>
 </web-app>

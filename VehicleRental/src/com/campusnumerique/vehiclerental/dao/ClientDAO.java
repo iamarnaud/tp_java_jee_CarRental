@@ -44,6 +44,19 @@ public class ClientDAO extends DAO<Client>{
 		
 		return client;
 	}
+	
+	public Client findConnectedClient(String mail, String login) throws SQLException{
+		Client client = new Client();  
+		
+		ResultSet result = this.connection.createStatement(
+		    ResultSet.TYPE_SCROLL_INSENSITIVE, 
+		    ResultSet.CONCUR_READ_ONLY
+		  ).executeQuery("SELECT * FROM client WHERE mail = '" + mail + "' AND login = '" + login + "' ");
+		if(result.first())
+			client = new Client(result.getInt("id"), result.getString("login"), result.getString("firstName"), result.getString("lastName"), result.getString("mail"), result.getDate("dob"), result.getDate("licenceDate"), result.getString("licenceNumber"));         
+		
+		return client;
+	}
 
 	@Override
 	public List<Client> findAll() throws SQLException{
@@ -59,6 +72,7 @@ public class ClientDAO extends DAO<Client>{
 		}
 		return clients;
 	}
+	
 
 	public JSONArray findAllAsJson(){
 		JSONArray clients = new JSONArray();

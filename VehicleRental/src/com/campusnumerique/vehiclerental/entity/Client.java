@@ -122,4 +122,14 @@ public class Client {
 		Period period = Period.between(date, now);
 		return period.getYears();
 	}
+
+	public void setEmail(String email) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void setMotDePasse(String motDePasse) {
+		// TODO Auto-generated method stub
+		
+	}
 }
