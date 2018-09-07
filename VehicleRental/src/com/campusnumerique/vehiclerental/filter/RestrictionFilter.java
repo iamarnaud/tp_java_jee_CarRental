@@ -28,6 +28,15 @@ public class RestrictionFilter implements Filter {
     	/* Cast des objets request et response */
         HttpServletRequest request = (HttpServletRequest) req;
         HttpServletResponse response = (HttpServletResponse) resp;
+         	
+    	/* Non-filtrage des ressources statiques */
+        String chemin = request.getRequestURI().substring( request.getContextPath().length() );
+        System.out.println(chemin);
+        if ( chemin.startsWith( "/resources" ) ) {
+        	System.out.println("test");
+            chain.doFilter( request, response );
+            return;
+        }
 
         /* Récupération de la session depuis la requête */
         HttpSession session = request.getSession();
@@ -37,11 +46,8 @@ public class RestrictionFilter implements Filter {
          * Si l'objet utilisateur n'existe pas dans la session en cours, alors
          * l'utilisateur n'est pas connecté.
          */
-    	System.out.println(request.getRequestURI());
-    	if (request.getRequestURI().startsWith("/VehicleRental/resources/")) {
-        	System.out.println("test");
-            chain.doFilter( request, response );
-        } else if ( session.getAttribute("client") == null || client.getLogin().equals("NoUserConnected") ) {
+//    	System.out.println(request.getRequestURI());
+    	if ( session.getAttribute("client") == null || client.getLogin().equals("NoUserConnected") ) {
             /* Redirection vers la page publique */
         	RequestDispatcher rd = request.getRequestDispatcher("ConnexionServlet");
 			rd.forward(request, response);

@@ -22,8 +22,10 @@
 	src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
 
 <!-- General -->
-<link rel="stylesheet" type="text/css" href="resources/css/test.css" />
+<link rel="stylesheet" type="text/css" href="resources/css/global.css" />
+<!-- <c:url value='resources/css/global.css'/> -->
 <!--  <script src="../resources/js/car.js"></script> -->
+<link rel="shortcut icon" type="image/x-icon" href="resources/images/delorean-square.png" />
 </head>
 <body>
 
@@ -34,7 +36,7 @@
 			<h2>Login</h2>
 		</div>
 		<div class="row">
-			<form method="post" action="./">
+			<form method="post" action="./login">
 				<fieldset>
 	                <legend>Connexion</legend>
 	                <p>Vous pouvez vous connecter via ce formulaire.</p>

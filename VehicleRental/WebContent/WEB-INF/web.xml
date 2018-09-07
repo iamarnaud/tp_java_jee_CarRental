@@ -62,7 +62,7 @@
   </servlet>
   <servlet-mapping>
     <servlet-name>ConnexionServlet</servlet-name>
-    <url-pattern>/</url-pattern>
+    <url-pattern>/login</url-pattern>
   </servlet-mapping>
   <servlet>
     <servlet-name>ResaListServlet</servlet-name>
@@ -73,6 +73,14 @@
     <url-pattern>/reservationsList</url-pattern>
   </servlet-mapping>
   <servlet>
+    <servlet-name>AllReservationsServlet</servlet-name>
+    <servlet-class>com.campusnumerique.vehiclerental.servlet.client.AllReservationsServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AllReservationsServlet</servlet-name>
+    <url-pattern>/allReservations</url-pattern>
+  </servlet-mapping>
+  <servlet>
     <servlet-name>LogoutServlet</servlet-name>
     <servlet-class>com.campusnumerique.vehiclerental.servlet.client.LogoutServlet</servlet-class>
   </servlet>
@@ -80,12 +88,28 @@
     <servlet-name>LogoutServlet</servlet-name>
     <url-pattern>/logout</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <servlet-name>ReservationDeleteServlet</servlet-name>
+    <servlet-class>com.campusnumerique.vehiclerental.servlet.client.ReservationDeleteServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ReservationDeleteServlet</servlet-name>
+    <url-pattern>/deleteReservation</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>DiscountedReservationServlet</servlet-name>
+    <servlet-class>com.campusnumerique.vehiclerental.servlet.client.DiscountedReservationServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DiscountedReservationServlet</servlet-name>
+    <url-pattern>/discountedReservation</url-pattern>
+  </servlet-mapping>
   <filter>
-	<filter-name>RestrictionFilter</filter-name>
-	<filter-class>com.campusnumerique.vehiclerental.filter.RestrictionFilter</filter-class>
-</filter>
-<filter-mapping>
-	<filter-name>RestrictionFilter</filter-name>
-	<url-pattern>/*</url-pattern>
-</filter-mapping>
+    <filter-name>RestrictionFilter</filter-name>
+    <filter-class>com.campusnumerique.vehiclerental.filter.RestrictionFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>RestrictionFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
 </web-app>

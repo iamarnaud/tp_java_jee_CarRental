@@ -11,6 +11,7 @@ public class Reservation {
 	private int estimatedKm;
 	private int realKm;
 	private double price;
+	private boolean discounted = false;
 	
 	
 	public Reservation() {
@@ -19,7 +20,7 @@ public class Reservation {
 		setPrice(0);
 	}
 	
-	public Reservation(int clientId, int carId, Date startDate, Date endDate, int estimatedKm, int realKm, double price) {
+	public Reservation(int clientId, int carId, Date startDate, Date endDate, int estimatedKm, int realKm, double price, boolean discounted) {
 		super();
 		this.clientId = clientId;
 		this.carId = carId;
@@ -28,6 +29,7 @@ public class Reservation {
 		this.estimatedKm = estimatedKm;
 		this.realKm = realKm;
 		this.price = price;
+		setDiscounted(discounted);
 	}
 	
 	
@@ -72,6 +74,14 @@ public class Reservation {
 	}
 	public void setPrice(double price) {
 		this.price = price;
+	}
+
+	public boolean isDiscounted() {
+		return discounted;
+	}
+
+	public void setDiscounted(boolean discounted) {
+		this.discounted = discounted;
 	}
 	
 	

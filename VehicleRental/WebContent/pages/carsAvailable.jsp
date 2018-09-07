@@ -28,8 +28,9 @@
 	src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
 
 <!-- General -->
-<link rel="stylesheet" href="resources/css/global.css" />
+<link rel="stylesheet" href="<c:url value="resources/css/global.css"/>" />
 <!--  <script src="../resources/js/car.js"></script> -->
+<link rel="shortcut icon" type="image/x-icon" href="resources/images/delorean.png" />
 </head>
 <body>
 

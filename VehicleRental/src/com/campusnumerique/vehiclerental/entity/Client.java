@@ -1,6 +1,10 @@
 package com.campusnumerique.vehiclerental.entity;
 
 import java.util.Date;
+
+import javax.crypto.Cipher;
+import javax.crypto.spec.SecretKeySpec;
+
 import java.time.LocalDate;
 import java.time.Period;
 
@@ -17,13 +21,14 @@ public class Client {
 	private Date licenceDate;
 	private String licenceNumber = "";
 	private boolean isGuest=false;
+	private boolean agent = false;
 	
 	public Client(){
 		setLogin("guest");
 		setGuest(true);
 	}
 	
-	public Client(int id, String login, String firstName, String lastName, String mail, Date dob, Date licenceDate, String licenceNumber){
+	public Client(int id, String login, String firstName, String lastName, String mail, Date dob, Date licenceDate, String licenceNumber, boolean agent){
 		setId(id);
 		setLogin(login);  
 		setFirstName(firstName);
@@ -33,6 +38,7 @@ public class Client {
 		setLicenceDate(licenceDate);
 		setLicenceNumber(licenceNumber);
 		setGuest(false);
+		setAgent(agent);
 	}
 	
 	public String getLogin() {
@@ -101,6 +107,14 @@ public class Client {
 		this.licenceNumber = licenceNumber;
 	}
 
+	public boolean isAgent() {
+		return agent;
+	}
+
+	public void setAgent(boolean agent) {
+		this.agent = agent;
+	}
+
 	public JSONObject getInfos(){
 		JSONObject infos= new JSONObject();
 		infos.put("login", login);
@@ -121,5 +135,39 @@ public class Client {
 		LocalDate now = LocalDate.now();
 		Period period = Period.between(date, now);
 		return period.getYears();
+	}
+	
+	public static String encrypt(String strClearText,String strKey) throws Exception{
+		String strData="";
+		
+		try {
+			SecretKeySpec skeyspec=new SecretKeySpec(strKey.getBytes(),"Blowfish");
+			Cipher cipher=Cipher.getInstance("Blowfish");
+			cipher.init(Cipher.ENCRYPT_MODE, skeyspec);
+			byte[] encrypted=cipher.doFinal(strClearText.getBytes());
+			strData=new String(encrypted);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new Exception(e);
+		}
+		return strData;
+	}
+	
+	public static String decrypt(String strEncrypted,String strKey) throws Exception{
+		String strData="";
+		
+		try {
+			SecretKeySpec skeyspec=new SecretKeySpec(strKey.getBytes(),"Blowfish");
+			Cipher cipher=Cipher.getInstance("Blowfish");
+			cipher.init(Cipher.DECRYPT_MODE, skeyspec);
+			byte[] decrypted=cipher.doFinal(strEncrypted.getBytes());
+			strData=new String(decrypted);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new Exception(e);
+		}
+		return strData;
 	}
 }

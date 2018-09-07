@@ -4,6 +4,8 @@
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<jsp:useBean id="client" scope="session"
+	class="com.campusnumerique.vehiclerental.bean.ClientBean" />
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -25,6 +27,7 @@
 <!-- General -->
 <link rel="stylesheet" href="resources/css/global.css" />
 <!--  <script src="../resources/js/car.js"></script> -->
+<link rel="shortcut icon" type="image/x-icon" href="resources/images/delorean.png" />
 </head>
 <body>
 

@@ -58,8 +58,22 @@ public class ConnexionServlet extends HttpServlet {
 			return;
 		}
 		
+		String pwd="";
 		try {
-			client = clientDAO.findByConnection(client.getMail(), client.getLogin());
+			pwd = client.encrypt(client.getLogin(), "toto");
+		} catch (Exception e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+//		try {
+//			pwd = client.decrypt(pwd, "toto");
+//		} catch (Exception e1) {
+//			// TODO Auto-generated catch block
+//			e1.printStackTrace();
+//		}
+		
+		try {
+			client = clientDAO.findByConnection(client.getMail(), pwd);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
