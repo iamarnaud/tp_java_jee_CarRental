@@ -77,30 +77,34 @@ public class ConnexionServlet extends HttpServlet {
 		 *  
 		 */
 		if (connectedClient.getLogin().equals("guest")){
+         session.setAttribute( ATT_SESSION_USER, null );
 			request.setAttribute( ATT_FORM, form );
 			doGet(request, response);
-		return;
+			return;
+		}
+		else{
+            session.setAttribute( ATT_SESSION_USER, client );
+    		session.setAttribute("connectedClient", connectedClient);
+    		RequestDispatcher rd = request.getRequestDispatcher("CarServlet");
+    		rd.forward(request, response);
+		
 		}
 		
-		session.setAttribute("connectedClient", connectedClient);
-		RequestDispatcher rd = request.getRequestDispatcher("CarServlet");
-		rd.forward(request, response);
 		
 		/**
          * Si aucune erreur de validation n'a eu lieu, alors ajout du bean
          * Client à la session, sinon suppression du bean de la session.
          */
-        if ( form.getErreurs().isEmpty() ) {
-            session.setAttribute( ATT_SESSION_USER, client );
-        } else {
-            session.setAttribute( ATT_SESSION_USER, null );
-        }
+//        if ( form.getErreurs().isEmpty() ) {
+//        } else {
+//            session.setAttribute( ATT_SESSION_USER, null );
+//            /* Stockage du formulaire et du bean dans l'objet request */
+//            
+//            request.setAttribute( ATT_USER, client );
+//
+//            this.getServletContext().getRequestDispatcher( VUE ).forward( request, response );
+//        }
 
-        /* Stockage du formulaire et du bean dans l'objet request */
-       
-        request.setAttribute( ATT_USER, client );
-
-        this.getServletContext().getRequestDispatcher( VUE ).forward( request, response );
  		
 	}
 }

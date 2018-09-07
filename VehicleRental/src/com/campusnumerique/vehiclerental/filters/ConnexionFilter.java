@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.campusnumerique.vehiclerental.bean.ClientBean;
-import com.campusnumerique.vehiclerental.servlet.client.ConnexionServlet;
+import com.campusnumerique.vehiclerental.entity.Client;
 
 /**
  * Servlet Filter implementation class ConnexionFilter2
@@ -59,14 +59,14 @@ public class ConnexionFilter implements Filter {
 
 		/* Récupération de la session depuis la requête */
 		HttpSession session = request.getSession();
-		ClientBean client = (ClientBean) session.getAttribute("connectedlient");
+		Client client = (Client) session.getAttribute("connectedClient");
 		
 
 		/**
 		 * Si l'objet client n'existe pas dans la session en cours, alors
 		 * l'utilisateur n'est pas connecté.
 		 */
-		if (session.getAttribute(ATT_SESSION_USER) == null || client.getLogin().equals("NoUserLogin") ) {
+		if (session.getAttribute(ATT_SESSION_USER) == null || client==null || client.getLogin().equals("NoUserLogin") ) {
 			/* Si le client n'est pas en bdd il est redirigé vers la page connexion */
 			RequestDispatcher rd = request.getRequestDispatcher("connexion");
 			rd.forward(request, response);
